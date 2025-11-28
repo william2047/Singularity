@@ -68,6 +68,3 @@ class Generate{
 }
 
 export default Generate;
-
-
-const gen = new Generate();

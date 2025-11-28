@@ -1,4 +1,4 @@
-import { ZodError } from "zod";
+import { FeatureIds, FeaturesRecord } from "./features";
 import Prompt from "./prompt";
 import { mergeSettings } from "./settings";
 import { Settings, SettingsAddition } from "./settings/internal";
@@ -6,7 +6,7 @@ import { SettingsAdditionInputSchema, SettingsSchema } from "./settings/user";
 
 
 class Generate{
-  // static features: ;
+  static features = FeaturesRecord;
 
   prompt: Prompt;
   settings: Settings;

@@ -45,6 +45,26 @@ class Generate{
     this.settings = mergedSettings;
   }
 
+
+  /**
+   * Retrieves a list of feature IDs that are currently in use.
+   *
+   * This method iterates over all features defined in the generation feature record.
+   *
+   * @returns {FeatureIds[]} An array of feature IDs that are in use.
+   */
+  getUsedFeatures(): FeatureIds[] {
+    const usedFeatures: FeatureIds[] = []
+    
+    Object.values(FeaturesRecord)
+    .forEach((feature) => {
+      if(feature.existenceChecker(this)){
+        usedFeatures.push(feature.id);
+      }
+    })
+
+    return usedFeatures;
+  }
 }
 
 export default Generate;

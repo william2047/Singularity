@@ -35,7 +35,7 @@ class Prompt {
 	 */
 	addAssistant(content: ContentInput) {
 		const parsedContent = ContentInputSchema.parse(content);
-		this.messages.push(createMessage(content, "assistant"));
+		this.messages.push(createMessage(parsedContent, "assistant"));
 	}
 
 	/**

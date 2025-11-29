@@ -43,19 +43,19 @@ const FeaturesRecord = {
     existenceChecker: (generate) => false,
   },
 
-  'prompt.messages.content.typeImageBase64': {
-    id: 'prompt.messages.content.typeImageBase64',
-    name: 'Base64 Image Content',
-    description: 'The content type of the message is an image encoded in base64',
-    existenceChecker: (generate) => false,
-  },
+  // 'prompt.messages.content.typeImageBase64': {
+  //   id: 'prompt.messages.content.typeImageBase64',
+  //   name: 'Base64 Image Content',
+  //   description: 'The content type of the message is an image encoded in base64',
+  //   existenceChecker: (generate) => false,
+  // },
 
-  'prompt.messages.content.typeImageUrl': {
-    id: 'prompt.messages.content.typeImageUrl',
-    name: 'Image URL Content',
-    description: 'The content type of the message is an image URL',
-    existenceChecker: (generate) => false,
-  },
+  // 'prompt.messages.content.typeImageUrl': {
+  //   id: 'prompt.messages.content.typeImageUrl',
+  //   name: 'Image URL Content',
+  //   description: 'The content type of the message is an image URL',
+  //   existenceChecker: (generate) => false,
+  // },
 
 } as const satisfies Record<string, Feature>;
 export default FeaturesRecord;

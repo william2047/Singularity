@@ -1,4 +1,4 @@
-import { Feature } from ".";
+import { FeatureBase } from ".";
 
 const FeaturesRecord = {
   'settings.temperature': {
@@ -42,22 +42,7 @@ const FeaturesRecord = {
     description: 'The content type of the message is text',
     existenceChecker: (generate) => false,
   },
-
-  // 'prompt.messages.content.typeImageBase64': {
-  //   id: 'prompt.messages.content.typeImageBase64',
-  //   name: 'Base64 Image Content',
-  //   description: 'The content type of the message is an image encoded in base64',
-  //   existenceChecker: (generate) => false,
-  // },
-
-  // 'prompt.messages.content.typeImageUrl': {
-  //   id: 'prompt.messages.content.typeImageUrl',
-  //   name: 'Image URL Content',
-  //   description: 'The content type of the message is an image URL',
-  //   existenceChecker: (generate) => false,
-  // },
-
-} as const satisfies Record<string, Feature>;
+} as const satisfies Record<string, FeatureBase>;
 export default FeaturesRecord;
 
 export type Features = typeof FeaturesRecord;

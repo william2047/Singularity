@@ -1,5 +1,13 @@
-export type Content =
-	| { type: "text"; text: string };
+interface ContentBase<TVal>{
+	type: string;
+	value: TVal;
+}
+
+interface TextContent extends ContentBase<string> {type: "text"} 
+
+type Content = 
+	| TextContent;
+
 
 type Role = "user" | "assistant";
 

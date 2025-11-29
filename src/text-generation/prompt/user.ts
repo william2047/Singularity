@@ -5,7 +5,7 @@ export const RoleSchema = z.enum(["user", "assistant"]);
 export type Role = z.infer<typeof RoleSchema>;
 
 export const TextContentSchema = z.object({
-  type: "text",
+  type: z.literal("text"),
   value: z.string(),
 });
 

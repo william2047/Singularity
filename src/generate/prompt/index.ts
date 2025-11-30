@@ -26,16 +26,16 @@ class Prompt {
 
 	/**
 	 * Adds a new message to the messages list with the specified content
-	 * and assigns it the role of "assistant".
+	 * and assigns it the role of "model".
 	 *
 	 * @param content - The input content, which can be either a single string or `Content` 
 	 *                  item, or an array of such items. Strings are automatically formatted 
 	 *                  into `text` content objects.
 	 * @throws {ZodError} Throws an error if the provided content does not pass validation.
 	 */
-	addAssistant(content: ContentInput) {
+	addModel(content: ContentInput) {
 		const parsedContent = ContentInputSchema.parse(content);
-		this.messages.push(createMessage(parsedContent, "assistant"));
+		this.messages.push(createMessage(parsedContent, "model"));
 	}
 
 	/**

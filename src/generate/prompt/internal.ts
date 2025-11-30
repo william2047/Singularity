@@ -9,7 +9,7 @@ type Content =
 	| TextContent;
 
 
-type Role = "user" | "assistant";
+type Role = "user" | "model";
 
 export type Message = {
 	role: Role;

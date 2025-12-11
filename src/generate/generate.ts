@@ -1,3 +1,4 @@
+import GenerateModel from "../generate-model/generate-model";
 import { FeatureIds, FeaturesRecord } from "./features";
 import Prompt from "./prompt";
 import { mergeSettings } from "./settings";
@@ -16,13 +17,16 @@ class Generate{
     this.settings = {};
   }
 
+  run(model: GenerateModel){
+    model.generate(this);
+  }
+
   /**
    * Updates the settings for the current instance by validating and parsing
    * the provided settings object against the defined schema.
    *
    * @param Settings - The settings object to be applied.
    *
-   * @throws {ZodError} If the provided settings object does not conform to the settings format.
    */
   setSettings(Settings: Settings){
     const parsedSettings = SettingsSchema.parse(Settings);
@@ -36,7 +40,6 @@ class Generate{
    * - The input settings must conform to the settings format.
    * 
    * @param settingsAddition - A partial object of type `SettingsAddition` containing the new settings to merge.
-   * @throws {ZodError} If the provided settings do not match the `SettingsAdditionInputSchema`.
    */
   editSettings(settingsAddition: Partial<SettingsAddition>){
     const parsedNewSettings = SettingsAdditionInputSchema.parse(settingsAddition);

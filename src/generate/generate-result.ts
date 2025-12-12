@@ -10,3 +10,5 @@ class GenerateResult {
 
   }
 }
+
+export default GenerateResult;

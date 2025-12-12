@@ -53,4 +53,4 @@ export {
   FeatureIds,
   FeaturesRecord,
   defaultFeatureHandlers,
-}
+};

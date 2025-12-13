@@ -5,11 +5,11 @@ interface ContentBase<TVal>{
 
 interface TextContent extends ContentBase<string> {type: "text"} 
 
-type Content = 
+export type Content = 
 	| TextContent;
 
 
-type Role = "user" | "model";
+export type Role = "user" | "model";
 
 export type Message = {
 	role: Role;

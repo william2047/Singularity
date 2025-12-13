@@ -9,5 +9,5 @@ export default defineConfig((options) => ({
   target: "es2020",
 
   // Allow per-package entry override
-  entry: options.entry
+  entry: options.entry || ["src/index.ts"],
 }));

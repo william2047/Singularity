@@ -1,9 +1,11 @@
-import { PartialFeatureHandlers } from "../generate/features";
+import { FeatureIds, PartialFeatureHandlers } from "../generate/features";
 import Generate from "../generate/generate";
 import GenerateResult from "../generate/generate-result";
-import { ModelFeatureSupportRecord } from "./features";
 
 
+export type ModelFeatureSupportRecord = {
+  [k in FeatureIds]: boolean;
+}
 
 
 

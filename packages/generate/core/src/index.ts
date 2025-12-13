@@ -1,4 +1,7 @@
 import Generate from "./generate";
+import GenerateModel from "./generate-model";
 
-
-export {Generate};
+export default Generate;
+export {
+  GenerateModel,
+}

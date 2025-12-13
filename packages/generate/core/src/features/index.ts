@@ -50,7 +50,7 @@ export function mergeFeatureHandlers(fullFeatureHandler: FeatureHandlers, ...par
 
 
 export {
-  FeatureIds,
+  type FeatureIds,
   FeaturesRecord,
   defaultFeatureHandlers,
 };

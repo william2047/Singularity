@@ -18,14 +18,14 @@ class GenerateOutput {
     output: Content[],
     originalInput: Generate,
     effectiveInput: Generate,
-    model: GenerateModel
+    model: GenerateModel<any>
   ) {
 
     this.output = output;
     this.originalInput = originalInput;
     this.effectiveInput = effectiveInput;
     this.modelProviderId = model.providerId;
-    this.modelId = model.modelId;
+    this.modelId = model.model;
 
     this.usedFeatures = originalInput.getUsedFeatures();
   }

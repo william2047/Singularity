@@ -17,8 +17,8 @@ class Generate{
     this.settings = {};
   }
 
-  run(model: GenerateModel){
-    model.generate(this);
+  run(model: GenerateModel<any>){
+    // model.generate(this);
   }
 
   /**

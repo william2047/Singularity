@@ -9,16 +9,19 @@ export type ModelFeatureSupportRecord = {
 
 
 
-abstract class GenerateModel {
-  abstract FeatureSupportRecord: ModelFeatureSupportRecord;
-  abstract FeatureHandlers: PartialFeatureHandlers;
-
+abstract class GenerateModel<TModleIds extends string> {
   abstract providerId: string;
-  abstract modelId: string;
 
+  // abstract FeatureSupportRecord: ModelFeatureSupportRecord;
+  // abstract FeatureHandlers: PartialFeatureHandlers;
   
-  abstract generate(generate: Generate): GenerateResult;
+  // abstract generate(generate: Generate): GenerateResult;
 
+  model: TModleIds;
+
+  constructor(model: TModleIds) {
+    this.model = model;
+  }
   
 }
 

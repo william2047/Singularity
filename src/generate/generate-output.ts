@@ -1,7 +1,7 @@
-import GenerateModel from "../../generate-model/generate-model";
-import { FeatureIds } from "../features";
-import Generate from "../generate";
-import { Content } from "../prompt/internal";
+import GenerateModel from "./generate-model";
+import { FeatureIds } from "./features";
+import Generate from "./generate";
+import { Content } from "./prompt/internal";
 
 class GenerateOutput { 
   readonly originalInput: Generate;

@@ -1,4 +1,4 @@
-import GenerateModel from "../generate-model/generate-model";
+import GenerateModel from "./generate-model";
 import { FeatureIds, FeaturesRecord } from "./features";
 import Prompt from "./prompt";
 import { mergeSettings } from "./settings";

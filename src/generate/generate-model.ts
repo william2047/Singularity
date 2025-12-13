@@ -1,6 +1,6 @@
-import { FeatureIds, PartialFeatureHandlers } from "../generate/features";
-import Generate from "../generate/generate";
-import GenerateResult from "../generate/generate-result";
+import { FeatureIds, PartialFeatureHandlers } from "./features";
+import Generate from "./generate";
+import GenerateResult from "./generate-result";
 
 
 export type ModelFeatureSupportRecord = {

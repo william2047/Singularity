@@ -2,6 +2,7 @@
   "name": "singularity",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "build": "pnpm -r --parallel build"

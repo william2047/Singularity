@@ -1,3 +1,4 @@
 packages:
   - "packages/generate/core"
-  - "packages/generate/models/*"
+  - "packages/generate/models/gemini"
+  - "packages/generate/models/openai"

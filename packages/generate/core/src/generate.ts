@@ -1,9 +1,9 @@
 import GenerateModel from "./generate-model";
 import { FeatureIds, FeaturesRecord } from "./features";
-import Prompt from "./prompt";
 import { mergeSettings } from "./settings";
 import { Settings, SettingsAddition } from "./settings/internal";
 import { SettingsAdditionInputSchema, SettingsSchema } from "./settings/user";
+import { Prompt, promptConstructor } from "./prompt";
 
 
 class Generate{
@@ -13,13 +13,15 @@ class Generate{
   settings: Settings;
 
   constructor(){
-    this.prompt = new Prompt();
+    this.prompt = promptConstructor([]);
     this.settings = {};
   }
 
   run(model: GenerateModel<any>){
     // model.generate(this);
   }
+
+  
 
   /**
    * Updates the settings for the current instance by validating and parsing

@@ -17,20 +17,35 @@ export type Message = {
 }
 
 
-/**
- * Creates a `Message` object with the specified role and content.
- * 
- * @param content - The input content, which can be either a single string or `Content` 
- *                  item, or an array of such items. Strings are automatically formatted 
- *                  into `text` content objects.
- * @param role - The role associated with the message, indicating the sender's role 
- *               (e.g., "user", "assistant").
- * 
- * @returns A `Message` object containing the specified role and an array of content objects.
- */
-export function createMessage(content: Content[], role: Role): Message {
+export type Prompt = {
+	messages: Message[];
+}
+
+
+export function promptMessageCreate(content: Content[], role: Role): Message {
 	return {
 		role: role,
 		content: content,
 	};
+}
+
+
+export function promptCreate(messages: Message[]): Prompt {
+	return {
+		messages: messages,
+	};
+}
+
+export function promptAppendMessages(prompt: Prompt, ...messages: Message[]): Prompt {
+	
+	return {
+		messages: [...prompt.messages, ...messages],
+	};
+}
+
+export function promptAppendContent(prompt: Prompt, role: Role, ...content: Content[]): Prompt {
+	return promptAppendMessages(
+		prompt,
+		promptMessageCreate(content, role)
+	);
 }

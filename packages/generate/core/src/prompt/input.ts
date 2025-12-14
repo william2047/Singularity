@@ -30,10 +30,18 @@ export const ContentInputSchema = z.union([
     );
   }
 });
-export type ContentInput = z.infer<typeof ContentInputSchema>;
+export type ContentInput = 
+  | string
+  | { type: "text"; value: string; }
+  | Array<string | { type: "text"; value: string; }>;
 
 
-export const MessageSchema = z.object({
+export const MessageInputSchema = z.object({
   role: RoleSchema,
   content: ContentInputSchema,
 });
+export type MessageInput = {
+  role: Role;
+  content: ContentInput;
+}
+

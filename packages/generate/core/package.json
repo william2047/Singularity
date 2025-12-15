@@ -6,12 +6,8 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-<<<<<<< HEAD
     "build": "tsup",
     "dev": "tsup --watch"
-=======
-    "build": "tsup"
->>>>>>> refs/remotes/origin/main
   },
   "exports": {
     ".": {

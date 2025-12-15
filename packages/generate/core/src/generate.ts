@@ -1,8 +1,8 @@
 import GenerateModel from "./generate-model";
 import { FeatureIds, FeaturesRecord } from "./features";
 import { mergeSettings } from "./settings";
-import { Settings, SettingsAddition } from "./settings/internal";
-import { SettingsAdditionInputSchema, SettingsSchema } from "./settings/user";
+import { Settings } from "./settings/internal";
+import { SettingsAddition, SettingsSchema } from "./settings/user";
 import { Prompt, promptConstructor } from "./prompt";
 
 
@@ -21,7 +21,7 @@ class Generate{
     // model.generate(this);
   }
 
-  
+
 
   /**
    * Updates the settings for the current instance by validating and parsing
@@ -43,11 +43,8 @@ class Generate{
    * 
    * @param settingsAddition - A partial object of type `SettingsAddition` containing the new settings to merge.
    */
-  editSettings(settingsAddition: Partial<SettingsAddition>){
-    const parsedNewSettings = SettingsAdditionInputSchema.parse(settingsAddition);
-    
-    const mergedSettings =  mergeSettings(this.settings, parsedNewSettings);
-    this.settings = mergedSettings;
+  editSettings(settingsAddition: SettingsAddition){    
+    this.settings = mergeSettings(this.settings, settingsAddition);
   }
 
 

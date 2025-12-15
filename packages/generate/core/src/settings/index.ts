@@ -1,4 +1,5 @@
-import { Settings, SettingsAddition } from "./internal";
+import { Settings } from "./internal";
+import { SettingsAddition, SettingsAdditionInputSchema, SettingsSchema } from "./user";
 
 
 /**
@@ -12,14 +13,25 @@ import { Settings, SettingsAddition } from "./internal";
  *          excluding any properties explicitly marked as `"unset"`.
  */
 export function mergeSettings(initialSettings: Settings, newSettings: SettingsAddition): Settings {
-  const mergeSettings = {initialSettings, ...(newSettings ?? {})};
-
+  const parsedInitialSettings = SettingsSchema.parse(initialSettings);
+  const parsedNewSettings = SettingsAdditionInputSchema.parse(newSettings);
+  
+  const mergedSettings: Settings = { ...parsedInitialSettings };
   // Remove any settings that are marked as "unset"
-  for (const key in newSettings) {
-    if (newSettings[key as keyof SettingsAddition] === "unset") {
-      delete mergeSettings[key as keyof Settings];
+  for (const key of Object.keys(parsedNewSettings) as (keyof SettingsAddition)[]) {
+    
+    if (parsedNewSettings[key] === "unset") {
+      delete mergedSettings[key];
+      
+    } else if(parsedNewSettings[key] === undefined){
+      continue;
+    }
+
+    else{
+      mergedSettings[key] = parsedNewSettings[key];
     }
   }
 
-  return mergeSettings as Settings;
+
+  return mergedSettings;
 }

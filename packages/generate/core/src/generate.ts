@@ -22,6 +22,15 @@ class Generate{
     // model.generate(this);
   }
 
+  appendUserMessage(message: ContentInput){
+    this.prompt = appendUserMessagesToPrompt(this.prompt, message);
+    return this;
+  }
+
+  appendModelMessage(message: ContentInput){
+    this.prompt = appendModelMessagesToPrompt(this.prompt, message);
+    return this;
+  }
 
 
   /**

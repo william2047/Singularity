@@ -14,6 +14,25 @@ export function appendMessagesToPrompt(prompt: Prompt, ...message: MessageInput[
 	return promptAppendMessages(prompt, ...parsedMessages);
 }
 
+export function appendUserMessagesToPrompt(prompt: Prompt, ...content: ContentInput[]): Prompt{
+	const parsedContent = ContentInputSchema.parse(content);
+	const message = {
+		role: "user",
+		content: parsedContent,
+	} as const;
+	return promptAppendMessages(prompt, message);
+}
+
+export function appendModelMessagesToPrompt(prompt: Prompt, ...content: ContentInput[]): Prompt{
+	const parsedContent = ContentInputSchema.parse(content);
+	const message = {
+		role: "model",
+		content: parsedContent,
+	} as const;
+	return promptAppendMessages(prompt, message);
+}
+
+
 export {
 	type Prompt,
 }

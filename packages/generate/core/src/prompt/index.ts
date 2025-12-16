@@ -1,5 +1,5 @@
 import z, { parse } from "zod";
-import { MessageInput, MessageInputSchema } from "./input";
+import { ContentInput, ContentInputSchema, MessageInput, MessageInputSchema } from "./input";
 import { promptCreate, Prompt, promptAppendMessages } from "./internal";
 
 export function promptConstructor(messages: MessageInput[]): Prompt {

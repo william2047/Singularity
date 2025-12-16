@@ -3,8 +3,10 @@ import { FeatureIds, FeaturesRecord } from "./features";
 import { mergeSettings } from "./settings";
 import { Settings } from "./settings/internal";
 import { SettingsAddition, SettingsSchema } from "./settings/user";
-import { Prompt, promptConstructor } from "./prompt";
+import { appendMessagesToPrompt, appendModelMessagesToPrompt, appendUserMessagesToPrompt, Prompt, promptConstructor } from "./prompt";
 import { generateSnapshot } from "./snapshot";
+import GenerateOutput from "./output";
+import { ContentInput } from "./prompt/input";
 
 
 class Generate{

@@ -1,11 +1,15 @@
 import { Content } from "./prompt/internal";
 
 type GenerateOutput = {
-  modelProviderId: string;
+  providerId: string;
   modelId: string;
 
-  provider: {
+  providerData: {
     request: unknown      // exact request body sent
     response: unknown     // exact provider response
-  }  
+  }
+
+  message: Content[];
 }
+
+export default GenerateOutput;

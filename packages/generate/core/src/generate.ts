@@ -18,8 +18,8 @@ class Generate{
     this.settings = {};
   }
 
-  run(model: GenerateModel<any>){
-    // model.generate(this);
+  async run(model: GenerateModel<any>): Promise<GenerateOutput> {
+    return model.generate(this);
   }
 
   appendUserMessage(message: ContentInput){

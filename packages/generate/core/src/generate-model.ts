@@ -1,6 +1,6 @@
 import { FeatureIds, PartialFeatureHandlers } from "./features";
 import Generate from "./generate";
-import GenerateResult from "./generate-result";
+import GenerateOutput from "./output";
 
 
 export type ModelFeatureSupportRecord = {
@@ -9,18 +9,24 @@ export type ModelFeatureSupportRecord = {
 
 
 
-abstract class GenerateModel<TModleIds extends string> {
+abstract class GenerateModel<const TModelIds extends readonly string[]> {
   abstract providerId: string;
-
+  abstract readonly modelIds: readonly string[];
+  
   // abstract FeatureSupportRecord: ModelFeatureSupportRecord;
   // abstract FeatureHandlers: PartialFeatureHandlers;
   
-  // abstract generate(generate: Generate): GenerateResult;
+  abstract generateInternal(generate: Generate): Promise<GenerateOutput>;
 
-  model: TModleIds;
+  declare model: TModelIds[number];
 
-  constructor(model: TModleIds) {
+  constructor(model: TModelIds[number]) {
     this.model = model;
+  }
+
+  async generate(generate: Generate): Promise<GenerateOutput> {
+
+    return this.generateInternal(generate);
   }
   
 }

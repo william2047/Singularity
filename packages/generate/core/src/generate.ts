@@ -45,6 +45,7 @@ class Generate{
   setSettings(Settings: Settings){
     const parsedSettings = SettingsSchema.parse(Settings);
     this.settings = parsedSettings;
+    return this;
   }
 
   /**
@@ -57,6 +58,7 @@ class Generate{
    */
   editSettings(settingsAddition: SettingsAddition){    
     this.settings = mergeSettings(this.settings, settingsAddition);
+    return this;
   }
 
 

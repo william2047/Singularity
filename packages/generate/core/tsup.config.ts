@@ -1,3 +1,3 @@
-import base from "../../../tsup.base.config.ts";
+import { baseConfig } from "../../../tsup.config";
 
-export default base;
+export default baseConfig;

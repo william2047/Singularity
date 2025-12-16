@@ -1,8 +1,5 @@
 {
-  "extends": "./tsconfig.dev.json",
+  "extends": "./tsconfig.base.json",
   "files": [],
-  "references": [
-    { "path": "packages/generate/core" },
-    { "path": "packages/generate/models/gemini" }
-  ]
+  "include": []
 }

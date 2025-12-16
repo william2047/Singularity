@@ -1,21 +1,16 @@
 {
   "compilerOptions": {
-    /* Language target */
     "target": "ES2020",
-    "lib": ["ES2020", "DOM"],
     "module": "ESNext",
-
-    /* Resolution */
     "moduleResolution": "Bundler",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
 
-    /* Type safety */
     "strict": true,
-    "isolatedModules": true,
-    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
 
-    /* Quality-of-life */
-    "forceConsistentCasingInFileNames": true
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "isolatedModules": true
   }
 }

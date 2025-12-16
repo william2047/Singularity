@@ -5,8 +5,9 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "build": "pnpm -r --parallel build",
-    "dev": "pnpm -r --parallel dev"
+    "build": "pnpm -r build",
+    "dev": "pnpm -r dev",
+    "clean": "pnpm -r exec rm -rf dist node_modules"
   },
   "keywords": [],
   "author": "",

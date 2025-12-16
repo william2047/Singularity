@@ -2,6 +2,7 @@
   "name": "@generate/core",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -11,15 +12,16 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     }
   },
+  "files": ["dist"],
   "peerDependencies": {
     "zod": "^4.1.13"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "license": "ISC"
 }

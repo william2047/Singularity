@@ -4,6 +4,7 @@ import { mergeSettings } from "./settings";
 import { Settings } from "./settings/internal";
 import { SettingsAddition, SettingsSchema } from "./settings/user";
 import { Prompt, promptConstructor } from "./prompt";
+import { generateSnapshot } from "./snapshot";
 
 
 class Generate{
@@ -66,6 +67,11 @@ class Generate{
     })
 
     return usedFeatures;
+  }
+
+
+  getSnapshot(){
+    return generateSnapshot(this);
   }
 }
 

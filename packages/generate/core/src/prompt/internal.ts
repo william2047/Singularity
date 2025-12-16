@@ -49,3 +49,17 @@ export function promptAppendContent(prompt: Prompt, role: Role, ...content: Cont
 		promptMessageCreate(content, role)
 	);
 }
+
+
+export type TextContentSnapshot = TextContent;
+
+export type ContentSnapshot = 
+	| TextContentSnapshot;
+
+export type MessageSnapshot = {
+	role: Role;
+	content: ContentSnapshot[];
+}
+export type PromptSnapshot = {
+	messages: MessageSnapshot[];
+}

@@ -5,9 +5,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "build": "pnpm -r build",
-    "dev": "pnpm -r dev",
-    "clean": "pnpm -r exec rm -rf dist node_modules"
+    "build": "tsc -b",
+    "dev": "tsc -b -w"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +16,6 @@
     "zod": "^4.1.13"
   },
   "devDependencies": {
-    "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   }
 }

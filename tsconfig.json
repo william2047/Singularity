@@ -1,5 +1,8 @@
 {
-  "extends": "./tsconfig.base.json",
   "files": [],
-  "include": []
+  "references": [
+    { "path": "packages/generate/core" },
+    { "path": "packages/generate/models/gemini" },
+    { "path": "packages/generate/models/openai" }
+  ]
 }

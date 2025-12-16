@@ -28,12 +28,6 @@ importers:
         specifier: workspace:*
         version: link:../../core
 
-  packages/generate/models/openai:
-    dependencies:
-      '@generate/core':
-        specifier: workspace:*
-        version: link:../../core
-
 packages:
 
   typescript@5.9.3:

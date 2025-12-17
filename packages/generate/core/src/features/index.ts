@@ -2,7 +2,7 @@ import Generate from "../generate";
 import FeaturesRecord, { FeatureIds } from "./record";
 import defaultFeatureHandlers from "./default-feature-handlers";
 
-export type FeatureBase = {
+export type FeatureEntry = {
   id: string;
   name: string;
   description: string;

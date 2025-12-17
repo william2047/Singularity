@@ -1,4 +1,4 @@
-import { FeatureBase } from ".";
+import { FeatureEntry } from ".";
 
 const FeaturesRecord = {
   'settings.temperature': {
@@ -42,7 +42,7 @@ const FeaturesRecord = {
     description: 'The content type of the message is text',
     existenceChecker: (generate) => false,
   },
-} as const satisfies Record<string, FeatureBase>;
+} as const satisfies Record<string, FeatureEntry>;
 export default FeaturesRecord;
 
 export type Features = typeof FeaturesRecord;

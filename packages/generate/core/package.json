@@ -17,9 +17,9 @@
       "require": "./dist/index.js"
     },
     "./internal": {
-      "types": "./dist/internal/*.d.ts",
-      "import": "./dist/internal/*.mjs",
-      "require": "./dist/internal/*.js"
+      "types": "./dist/internal/index.d.ts",
+      "import": "./dist/internal/index.js",
+      "require": "./dist/internal/index.js"
     }
   },
   "files": [

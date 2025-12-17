@@ -40,19 +40,17 @@ function geminiBody(generate: Generate) {
 
 
 
-const modelIds = ["gemini-2.0-flash-lite","gemini-2.5-flash"] as const
-
-export class GeminiModel extends GenerateModel<typeof modelIds> {
+export class GeminiModel extends GenerateModel{
   featureSupportRecord = FeatureSupportRecord;
   modelDefaultFeatureHandler = FeatureSupportHandler;
   
   providerId = "gemini";
-  readonly modelIds = modelIds;
+  readonly modelId = "gemini-2.5-flash";
 
   apiKey: string;
 
-  constructor(model: typeof modelIds[number], apiKey: string) {
-    super(model);
+  constructor(apiKey: string, ) {
+    super();
     this.apiKey = apiKey;
   }
 
@@ -69,7 +67,7 @@ export class GeminiModel extends GenerateModel<typeof modelIds> {
     };
 
     const req = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent`,
+      `https://generativelanguage.googleapis.com/v1beta/models/${this.modelId}:generateContent`,
       request
     );
 
@@ -81,7 +79,7 @@ export class GeminiModel extends GenerateModel<typeof modelIds> {
 
 
     return {
-      modelId: this.model,
+      modelId: this.modelId,
       providerId: this.providerId,
       providerData: {
         request: body,

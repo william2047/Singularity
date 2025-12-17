@@ -6,25 +6,24 @@ import GenerateOutput from "../output";
 
 
 
-abstract class GenerateModel<const TModelIds extends readonly string[]> {
+abstract class GenerateModel{
   abstract providerId: string;
-  abstract readonly modelIds: readonly string[];
+  abstract readonly modelId: string;
   
+  // Map of feature support for this model
   abstract featureSupportRecord: ModelFeatureSupportRecord;
   abstract modelDefaultFeatureHandler: PartialFeatureHandlers;
   featureHandler: PartialFeatureHandlers;
   
   abstract generateInternal(generate: Generate): Promise<GenerateOutput>;
 
-  declare model: TModelIds[number];
+  constructor(featureHandler?: PartialFeatureHandlers) {
 
-  constructor(model: TModelIds[number], featureHandler?: PartialFeatureHandlers) {
+    // Cascade merge feature handlers: default handlers < model default handlers < provided handlers
     this.featureHandler = mergeFeatureHandlers(
       defaultFeatureHandlers,
       featureHandler || {}
     )
-    
-    this.model = model;
   }
 
   async generate(generate: Generate): Promise<GenerateOutput> {

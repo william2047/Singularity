@@ -11,6 +11,10 @@ export type FeatureEntry = {
 };
 
 
+export type ModelFeatureSupportRecord = {
+  [k in FeatureIds]: boolean;
+}
+
 
 type FeatureHandlerFallback = {
   onUnsupported: "fallback";

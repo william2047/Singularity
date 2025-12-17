@@ -3,12 +3,6 @@ import Generate from "../generate";
 import GenerateOutput from "../output";
 
 
-export type ModelFeatureSupportRecord = {
-  [k in FeatureIds]: boolean;
-}
-
-
-
 abstract class GenerateModel<const TModelIds extends readonly string[]> {
   abstract providerId: string;
   abstract readonly modelIds: readonly string[];

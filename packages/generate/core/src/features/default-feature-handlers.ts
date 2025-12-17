@@ -2,32 +2,21 @@ import { FeatureHandlers } from ".";
 
 const defaultFeatureHandlers = {
   'settings.temperature': {
-    id: 'settings.temperature',
-    onUnsupported: 'fallback',
-    fallbackFn: (generate) => {},
+    onUnsupported: 'error',
   },
   'settings.maxTokens': {
-    id: 'settings.maxTokens',
-    onUnsupported: 'fallback',
-    fallbackFn: (generate) => {},
+    onUnsupported: 'error',
   },
   'settings.topP': {
-    id: 'settings.topP',
-    onUnsupported: 'fallback',
-    fallbackFn: (generate) => {},
+    onUnsupported: 'error',
   },
   'settings.frequencyPenalty': {
-    id: 'settings.frequencyPenalty',
-    onUnsupported: 'fallback',
-    fallbackFn: (generate) => {},
+    onUnsupported: 'error',
   },
   'settings.presencePenalty': {
-    id: 'settings.presencePenalty',
-    onUnsupported: 'fallback',
-    fallbackFn: (generate) => {},
+    onUnsupported: 'error',
   },
   'inputContent.typeText': {
-    id: 'inputContent.typeText',
     onUnsupported: 'error',
   },
 

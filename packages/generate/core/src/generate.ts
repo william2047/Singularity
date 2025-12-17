@@ -1,16 +1,17 @@
 import GenerateModel from "./generate-model";
-import { FeatureIds, FeaturesRecord } from "./features";
+import { FeatureIds, FeatureRecord } from "./features";
 import { mergeSettings } from "./settings";
 import { Settings } from "./settings/internal";
 import { SettingsAddition, SettingsSchema } from "./settings/user";
-import { appendMessagesToPrompt, appendModelMessagesToPrompt, appendUserMessagesToPrompt, Prompt, promptConstructor } from "./prompt";
+import { appendModelMessagesToPrompt, appendUserMessagesToPrompt, Prompt, promptConstructor } from "./prompt";
 import { generateSnapshot } from "./snapshot";
 import GenerateOutput from "./output";
 import { ContentInput } from "./prompt/input";
+import { keys } from "./utils.ts";
 
 
 class Generate{
-  static features = FeaturesRecord;
+  static features = FeatureRecord;
 
   prompt: Prompt;
   settings: Settings;
@@ -72,12 +73,12 @@ class Generate{
   getUsedFeatures(): FeatureIds[] {
     const usedFeatures: FeatureIds[] = []
     
-    Object.values(FeaturesRecord)
-    .forEach((feature) => {
+    for(const featureId of keys(FeatureRecord)){
+      const feature = FeatureRecord[featureId];
       if(feature.existenceChecker(this)){
-        usedFeatures.push(feature.id);
+        usedFeatures.push(featureId);
       }
-    })
+    }
 
     return usedFeatures;
   }

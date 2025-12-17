@@ -1,20 +1,32 @@
 import Generate from "../generate";
-import FeaturesRecord, { FeatureIds } from "./record";
+import FeatureRecord, { FeatureIds } from "./record";
 import defaultFeatureHandlers from "./default-feature-handlers";
+import { keys } from "../utils.ts";
 
 export type FeatureEntry = {
-  id: string;
   name: string;
   description: string;
+  incompatibleWith?: string[];
   existenceChecker: (generate: Generate) => boolean;
 };
 
 
-export type FeatureHandler = {
-  id: FeatureIds;
-  onUnsupported: 'error' | 'fallback' | 'ignore';
+
+type FeatureHandlerFallback = {
+  onUnsupported: "fallback";
+  fallbackFn: (generate: Generate) => void;
+};
+
+type FeatureHandlerNoFallback = {
+  onUnsupported: "error" | "ignore" ;
   fallbackFn?: (generate: Generate) => void;
-}
+};
+
+
+export type FeatureHandler = 
+  | FeatureHandlerFallback
+  | FeatureHandlerNoFallback
+
 
 export type FeatureHandlers = {
   [K in FeatureIds]: FeatureHandler;
@@ -25,22 +37,15 @@ export type PartialFeatureHandlers = {
 };  
 
 
-export function mergeFeatureHandlers(fullFeatureHandler: FeatureHandlers, ...partialFeatureHandlers: PartialFeatureHandlers[]): FeatureHandlers {
+export function mergeFeatureHandlers(fullFeatureHandler: FeatureHandlers, ...featureHandlers: PartialFeatureHandlers[]): FeatureHandlers {
   const mergedHandlers = { ...fullFeatureHandler };
 
-  for (const partialHandler of partialFeatureHandlers) {
-    for (const featureId in partialHandler) {
-      if (partialHandler.hasOwnProperty(featureId)) {
-        const fullHandler = mergedHandlers[featureId as FeatureIds];
-        const partialFeature = partialHandler[featureId as FeatureIds];
-
-        if (partialFeature) {
-          mergedHandlers[featureId as FeatureIds] = {
-            ...fullHandler,
-            ...partialFeature,
-          };
-        }
-      }
+  for(const partialhandler of featureHandlers){
+    for(const featureId of keys(partialhandler)){
+      mergedHandlers[featureId] = {
+        ...mergedHandlers[featureId],
+        ...partialhandler[featureId],
+      } as FeatureHandler;
     }
   }
 
@@ -51,6 +56,6 @@ export function mergeFeatureHandlers(fullFeatureHandler: FeatureHandlers, ...par
 
 export {
   type FeatureIds,
-  FeaturesRecord,
+  FeatureRecord,
   defaultFeatureHandlers,
 };

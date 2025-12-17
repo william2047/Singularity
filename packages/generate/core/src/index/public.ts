@@ -1,4 +1,2 @@
 import Generate from "../generate";
-export{
-  Generate
-}
+export default Generate;

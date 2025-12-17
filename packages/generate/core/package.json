@@ -12,14 +12,14 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "types": "./dist/index/public.d.ts",
+      "import": "./dist/index/public.mjs",
+      "require": "./dist/index/public.js"
     },
     "./internal": {
-      "types": "./dist/internal/index.d.ts",
-      "import": "./dist/internal/index.js",
-      "require": "./dist/internal/index.js"
+      "types": "./dist/index/internal.d.ts",
+      "import": "./dist/index/internal.js",
+      "require": "./dist/index/internal.js"
     }
   },
   "files": [

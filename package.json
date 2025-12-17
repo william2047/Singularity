@@ -5,8 +5,10 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "build": "tsc -b",
-    "dev": "tsc -b -w"
+    "build": "tsc -b --force",
+    "dev": "tsc -b -w",
+    "dev:fresh": "tsc -b --force && tsc -b -w",
+    "clean": "find packages -name \"tsconfig.tsbuildinfo\" -delete && rm -rf packages/**/dist"
   },
   "keywords": [],
   "author": "",

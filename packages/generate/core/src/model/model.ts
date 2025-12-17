@@ -1,14 +1,18 @@
-import { FeatureIds, PartialFeatureHandlers } from "../features";
+import { PartialFeatureHandlers, ModelFeatureSupportRecord } from "../features";
 import Generate from "../generate";
 import GenerateOutput from "../output";
+
+
+
 
 
 abstract class GenerateModel<const TModelIds extends readonly string[]> {
   abstract providerId: string;
   abstract readonly modelIds: readonly string[];
   
-  // abstract FeatureSupportRecord: ModelFeatureSupportRecord;
-  // abstract FeatureHandlers: PartialFeatureHandlers;
+  
+  abstract FeatureSupportRecord: ModelFeatureSupportRecord;
+  abstract FeatureHandlers: PartialFeatureHandlers;
   
   abstract generateInternal(generate: Generate): Promise<GenerateOutput>;
 

@@ -1,4 +1,4 @@
-import GenerateModel from "./generate-model";
+import GenerateModel from "./model/model";
 import { FeatureIds, FeatureRecord } from "./features";
 import { mergeSettings } from "./settings";
 import { Settings } from "./settings/internal";
@@ -82,7 +82,7 @@ class Generate{
 
     return usedFeatures;
   }
-
+  
 
   getSnapshot(){
     return generateSnapshot(this);

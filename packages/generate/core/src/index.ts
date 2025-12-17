@@ -1,5 +1,5 @@
 import Generate from "./generate";
-import GenerateModel from "./generate-model";
+import GenerateModel from "./model/model";
 import { GenerateSnapshot } from "./snapshot";
 
 export default Generate;

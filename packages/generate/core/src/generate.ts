@@ -21,7 +21,7 @@ class Generate{
     this.settings = {};
   }
 
-  async run(model: GenerateModel<any>): Promise<GenerateOutput> {
+  async run(model: GenerateModel): Promise<GenerateOutput> {
     return model.generate(this);
   }
 

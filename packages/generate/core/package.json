@@ -15,9 +15,16 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
+    },
+    "./internal": {
+      "types": "./dist/internal/*.d.ts",
+      "import": "./dist/internal/*.mjs",
+      "require": "./dist/internal/*.js"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
     "zod": "^4.1.13"
   },

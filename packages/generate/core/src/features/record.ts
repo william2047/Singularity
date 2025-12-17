@@ -40,7 +40,7 @@ const FeaturesRecord = {
     id: 'prompt.messages.content.typeText',
     name: 'Text Content',
     description: 'The content type of the message is text',
-    existenceChecker: (generate) => false,
+    existenceChecker: (generate) => generate.prompt.messages.some(msg => msg.content.some((content) => content.type === 'text')),
   },
 } as const satisfies Record<string, FeatureEntry>;
 export default FeaturesRecord;

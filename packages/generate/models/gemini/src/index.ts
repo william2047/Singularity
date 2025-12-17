@@ -1,5 +1,11 @@
-import Generate, { GenerateModel } from "@generate/core";
-
+import {
+  GenerateModel,
+  Generate,
+  GenerateOutput,
+  Content,
+} from "@generate/core/internal"
+import FeatureSupportRecord from "./feature-support-record";
+import FeatureSupportHandler from "./default-feature-handler";
 
 function contentToGeminiPart(content: Content): any{
   switch(content.type){
@@ -37,6 +43,9 @@ function geminiBody(generate: Generate) {
 const modelIds = ["gemini-2.0-flash-lite","gemini-2.5-flash"] as const
 
 export class GeminiModel extends GenerateModel<typeof modelIds> {
+  FeatureSupportRecord = FeatureSupportRecord;
+  FeatureHandler = FeatureSupportHandler;
+  
   providerId = "gemini";
   readonly modelIds = modelIds;
 

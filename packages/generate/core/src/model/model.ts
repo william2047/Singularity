@@ -10,9 +10,8 @@ abstract class GenerateModel<const TModelIds extends readonly string[]> {
   abstract providerId: string;
   abstract readonly modelIds: readonly string[];
   
-  
   abstract FeatureSupportRecord: ModelFeatureSupportRecord;
-  abstract FeatureHandlers: PartialFeatureHandlers;
+  abstract FeatureHandler: PartialFeatureHandlers;
   
   abstract generateInternal(generate: Generate): Promise<GenerateOutput>;
 

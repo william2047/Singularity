@@ -1,6 +1,4 @@
 import Generate, { GenerateModel } from "@generate/core";
-import GenerateOutput from "../../../core/src/output";
-import { Content } from "../../../core/src/prompt/internal";
 
 
 function contentToGeminiPart(content: Content): any{

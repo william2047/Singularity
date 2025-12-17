@@ -1,4 +1,4 @@
-import { PartialFeatureHandlers, ModelFeatureSupportRecord } from "../features";
+import { PartialFeatureHandlers, ModelFeatureSupportRecord, mergeFeatureHandlers, defaultFeatureHandlers } from "../features";
 import Generate from "../generate";
 import GenerateOutput from "../output";
 
@@ -10,14 +10,20 @@ abstract class GenerateModel<const TModelIds extends readonly string[]> {
   abstract providerId: string;
   abstract readonly modelIds: readonly string[];
   
-  abstract FeatureSupportRecord: ModelFeatureSupportRecord;
-  abstract FeatureHandler: PartialFeatureHandlers;
+  abstract featureSupportRecord: ModelFeatureSupportRecord;
+  abstract modelDefaultFeatureHandler: PartialFeatureHandlers;
+  featureHandler: PartialFeatureHandlers;
   
   abstract generateInternal(generate: Generate): Promise<GenerateOutput>;
 
   declare model: TModelIds[number];
 
-  constructor(model: TModelIds[number]) {
+  constructor(model: TModelIds[number], featureHandler?: PartialFeatureHandlers) {
+    this.featureHandler = mergeFeatureHandlers(
+      defaultFeatureHandlers,
+      featureHandler || {}
+    )
+    
     this.model = model;
   }
 

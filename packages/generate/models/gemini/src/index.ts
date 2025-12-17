@@ -43,8 +43,8 @@ function geminiBody(generate: Generate) {
 const modelIds = ["gemini-2.0-flash-lite","gemini-2.5-flash"] as const
 
 export class GeminiModel extends GenerateModel<typeof modelIds> {
-  FeatureSupportRecord = FeatureSupportRecord;
-  FeatureHandler = FeatureSupportHandler;
+  featureSupportRecord = FeatureSupportRecord;
+  modelDefaultFeatureHandler = FeatureSupportHandler;
   
   providerId = "gemini";
   readonly modelIds = modelIds;

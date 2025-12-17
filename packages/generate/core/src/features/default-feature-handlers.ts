@@ -26,8 +26,8 @@ const defaultFeatureHandlers = {
     onUnsupported: 'fallback',
     fallbackFn: (generate) => {},
   },
-  'prompt.messages.content.typeText': {
-    id: 'prompt.messages.content.typeText',
+  'inputContent.typeText': {
+    id: 'inputContent.typeText',
     onUnsupported: 'error',
   },
 

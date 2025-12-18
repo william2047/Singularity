@@ -3,12 +3,12 @@ import {
   Generate,
   GenerateOutput,
   PartialFeatureHandlers,
-  Message,
+  Content,
 } from "@generate/core/internal"
 
 import FeatureSupportRecord from "./feature-support-record";
 
-function contentToGeminiPart(content: Message.Content): any{
+function contentToGeminiPart(content: Content): any{
   switch(content.type){
     case "text":
       return { text: content.value };

@@ -3,11 +3,11 @@ import { FeatureIds, FeatureRecord } from "./features";
 import { mergeSettings, settingsConstructor } from "./settings/operations";
 import { Settings } from "./settings/internal";
 import { SettingsAddition, SettingsSchema } from "./settings/input";
-import { appendModelMessagesToPrompt, appendUserMessagesToPrompt, Prompt, promptConstructor } from "./prompt/operations";
 import { GenerateForm, getGenerateForm } from "./form";
 import GenerateOutput from "./output";
-import { ContentInput } from "./prompt/input";
 import { keys } from "./utils.ts";
+import { ContentInput, Prompt, promptConstructor } from "./prompt/messages";
+import { appendModelMessagesToPrompt, appendUserMessagesToPrompt } from "./prompt/operations";
 
 
 class Generate{

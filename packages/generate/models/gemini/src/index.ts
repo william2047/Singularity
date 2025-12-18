@@ -3,9 +3,9 @@ import {
   Generate,
   GenerateOutput,
   Content,
+  PartialFeatureHandlers,
 } from "@generate/core/internal"
 import FeatureSupportRecord from "./feature-support-record";
-import FeatureSupportHandler from "./default-feature-handler";
 
 function contentToGeminiPart(content: Content): any{
   switch(content.type){
@@ -42,14 +42,13 @@ function geminiBody(generate: Generate) {
 
 export class GeminiModel extends GenerateModel{
   featureSupportRecord = FeatureSupportRecord;
-  modelDefaultFeatureHandler = FeatureSupportHandler;
   
   providerId = "gemini";
   readonly modelId = "gemini-2.5-flash";
 
   apiKey: string;
 
-  constructor(apiKey: string, ) {
+  constructor(apiKey: string, featureHandler?: PartialFeatureHandlers){
     super();
     this.apiKey = apiKey;
   }

@@ -1,5 +1,5 @@
 import Generate from "../generate";
-import { ModelFeatureSupportRecord, FeatureHandlers } from "../features/";
+import { ModelFeatureSupportRecord, PartialFeatureHandlers } from "../features/";
 import { GenerateModel} from "../model";
 import { } from "../settings";
 import { Prompt } from "../prompt"
@@ -14,5 +14,5 @@ export {
   type Content,
   type GenerateOutput,
   type ModelFeatureSupportRecord,
-  type FeatureHandlers,
+  type PartialFeatureHandlers,
 }

@@ -12,8 +12,7 @@ abstract class GenerateModel{
   
   // Map of feature support for this model
   abstract featureSupportRecord: ModelFeatureSupportRecord;
-  abstract modelDefaultFeatureHandler: PartialFeatureHandlers;
-  featureHandler: PartialFeatureHandlers;
+  featureHandler: PartialFeatureHandlers = {};
   
   abstract generateInternal(generate: Generate): Promise<GenerateOutput>;
 
@@ -22,7 +21,8 @@ abstract class GenerateModel{
     // Cascade merge feature handlers: default handlers < model default handlers < provided handlers
     this.featureHandler = mergeFeatureHandlers(
       defaultFeatureHandlers,
-      featureHandler || {}
+      this.featureHandler,
+      featureHandler ?? {}
     )
   }
 

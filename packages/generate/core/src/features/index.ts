@@ -8,6 +8,7 @@ export type FeatureEntry = {
   description: string;
   incompatibleWith?: string[];
   existenceChecker: (generate: Generate) => boolean;
+  structural: Boolean;
 };
 
 
@@ -16,20 +17,23 @@ export type ModelFeatureSupportRecord = {
 }
 
 
-type FeatureHandlerFallback = {
+// Features that fallback must provide a fallback function.
+type FeatureHandlerFallback<TFeatureId extends FeatureIds> = {
   onUnsupported: "fallback";
   fallbackFn: (generate: Generate) => void;
 };
 
-type FeatureHandlerNoFallback = {
-  onUnsupported: "error" | "ignore" ;
+type FeatureHandlerNoFallback<TFeatureId extends FeatureIds> = {
+  // Does not allow structural features to be ignored.
+  onUnsupported: (typeof FeatureRecord)[TFeatureId]["structural"] extends true ? "error" : ("ignore" | "error");
   fallbackFn?: (generate: Generate) => void;
 };
 
 
-export type FeatureHandler = 
-  | FeatureHandlerFallback
-  | FeatureHandlerNoFallback
+
+export type FeatureHandler<TFeatureId extends FeatureIds> = 
+  | FeatureHandlerFallback<TFeatureId>
+  | FeatureHandlerNoFallback<TFeatureId>
 
 
 export type FeatureHandlers = {

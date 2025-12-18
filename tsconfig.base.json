@@ -4,10 +4,36 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
 
-    "strict": true,
+    /* Output discipline */
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
+    "emitDeclarationOnly": false,
+    "noEmitOnError": true,
+
+    /* Strictness (core) */
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "useUnknownInCatchVariables": true,
+
+    /* Strictness (control flow & correctness) */
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+
+    /* Dead / useless code detection */
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+
+    /* Module hygiene */
+    "verbatimModuleSyntax": true,
+    "importsNotUsedAsValues": "error",
+    "preserveValueImports": true,
+
 
     "esModuleInterop": true,
     "skipLibCheck": true,

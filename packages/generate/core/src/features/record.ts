@@ -59,7 +59,6 @@ export const FeatureRecord = {
     description: 'The content type of the message is text',
     existenceChecker: (generate) => generate.prompt.messages.some(msg => msg.content.some((content) => content.type === 'text')),
     structural: true,
-    onIgnore: (generate) => generate.editSettings({ inputContent: { typeText: 'unset' } }),
   },
 } as const satisfies TFeatureRecord;
 

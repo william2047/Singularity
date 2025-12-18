@@ -27,7 +27,7 @@ export type TFeatureRecord = {
 
 
 export type ModelFeatureSupportRecord = {
-  [k in FeatureIds]: boolean;
+  [k in FeatureIds]?: boolean;
 }
 
 // Features that fallback must provide a fallback function.

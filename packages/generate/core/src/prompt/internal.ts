@@ -1,9 +1,9 @@
-interface ContentBase<TVal>{
+type ContentBase<Type extends string, Val> = {
 	type: string;
-	value: TVal;
+	value: Val;
 }
 
-interface TextContent extends ContentBase<string> {type: "text"} 
+export type TextContent = ContentBase<"text", string>
 
 export type Content = 
 	| TextContent;

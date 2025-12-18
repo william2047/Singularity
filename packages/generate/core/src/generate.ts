@@ -38,12 +38,11 @@ class Generate{
    * Updates the settings for the current instance by validating and parsing
    * the provided settings object against the defined schema.
    *
-   * @param Settings - The settings object to be applied.
+   * @param settings - The settings object to be applied.
    *
    */
-  setSettings(Settings: Settings){
-    const parsedSettings = SettingsSchema.parse(Settings);
-    this.settings = parsedSettings;
+  setSettings(settings: Settings){
+    this.settings = settingsConstructor(settings)
     return this;
   }
 

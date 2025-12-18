@@ -84,7 +84,7 @@ class Generate{
   }
   
 
-  getSnapshot(){
+  getForm(){
     return getGenerateForm(this);
   }
 }

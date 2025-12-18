@@ -1,8 +1,17 @@
 import { FeatureEntry } from ".";
 
 
+export type FeatureIds = 
+  | 'settings.temperature'
+  | 'settings.maxTokens'
+  | 'settings.topP'
+  | 'settings.frequencyPenalty'
+  | 'settings.presencePenalty'
+  | 'inputContent.typeText';
 
-const FeatureRecord= {
+
+
+export const FeatureRecord = {
   'settings.temperature': {
     name: 'Temperature',
     description: 'Balances creativity and reliability in the generated content',
@@ -46,7 +55,7 @@ const FeatureRecord= {
     existenceChecker: (generate) => generate.prompt.messages.some(msg => msg.content.some((content) => content.type === 'text')),
     structural: true,
   },
-} as const satisfies Record<string, FeatureEntry>;
-export default FeatureRecord;
+} as const satisfies {
+  [k in FeatureIds]: FeatureEntry<k>;
+};
 
-export type FeatureIds = keyof (typeof FeatureRecord);

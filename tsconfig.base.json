@@ -31,8 +31,8 @@
 
     /* Module hygiene */
     // "verbatimModuleSyntax": true,
-    "importsNotUsedAsValues": "error",
-    "preserveValueImports": true,
+    // "importsNotUsedAsValues": "error",
+    // "preserveValueImports": true,
 
 
     "esModuleInterop": true,

@@ -1,4 +1,4 @@
-import { FeatureEntry } from ".";
+import { FeatureEntry, TFeatureRecord } from ".";
 
 
 export type FeatureIds = 
@@ -18,6 +18,7 @@ export const FeatureRecord = {
     incompatibleWith: ["settings.topP"],
     existenceChecker: (generate) => generate.settings.temperature !== undefined,
     structural: false,
+    onIgnore: (generate) => generate.editSettings({ temperature: 'unset' }),
   },
 
   'settings.maxTokens': {
@@ -25,6 +26,7 @@ export const FeatureRecord = {
     description: 'Limits the length of the generated content',
     existenceChecker: (generate) => generate.settings.maxTokens !== undefined,
     structural: false,
+    onIgnore: (generate) => generate.editSettings({ maxTokens: 'unset' }),
   },
 
   'settings.topP': {
@@ -33,6 +35,7 @@ export const FeatureRecord = {
     incompatibleWith: ['settings.temperature'],
     existenceChecker: (generate) => generate.settings.topP !== undefined,
     structural: false,
+    onIgnore: (generate) => generate.editSettings({ topP: 'unset' }),
   },
 
   'settings.frequencyPenalty': {
@@ -40,6 +43,7 @@ export const FeatureRecord = {
     description: 'Reduces the likelihood of repeated phrases in the generated content',
     existenceChecker: (generate) => generate.settings.frequencyPenalty !== undefined,
     structural: false,
+    onIgnore: (generate) => generate.editSettings({ frequencyPenalty: 'unset' }),
   },
 
   'settings.presencePenalty': {
@@ -47,6 +51,7 @@ export const FeatureRecord = {
     description: 'Encourages the model to introduce new topics in the generated content',
     existenceChecker: (generate) => generate.settings.presencePenalty !== undefined,
     structural: false,
+    onIgnore: (generate) => generate.editSettings({ presencePenalty: 'unset' }),
   },
 
   'inputContent.typeText': {
@@ -54,8 +59,7 @@ export const FeatureRecord = {
     description: 'The content type of the message is text',
     existenceChecker: (generate) => generate.prompt.messages.some(msg => msg.content.some((content) => content.type === 'text')),
     structural: true,
+    onIgnore: (generate) => generate.editSettings({ inputContent: { typeText: 'unset' } }),
   },
-} as const satisfies {
-  [k in FeatureIds]: FeatureEntry<k>;
-};
+} as const satisfies TFeatureRecord;
 

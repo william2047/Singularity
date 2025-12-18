@@ -3,19 +3,32 @@ import { FeatureIds, FeatureRecord } from "./record";
 import defaultFeatureHandlers from "./default-feature-handlers";
 import { keys } from "../utils.ts";
 
-export type FeatureEntry<TFeatureId extends FeatureIds> = {
+
+type FeatureEntryBase<TFeatureId extends FeatureIds> = {
   name: string;
   description: string;
   incompatibleWith?: Exclude<FeatureIds, TFeatureId>[];
-  existenceChecker: (generate: Generate) => boolean;
-  structural: boolean;
+  existenceChecker: (generate: Generate) => void;
+};
+
+
+export type FeatureEntry<TFeatureId extends FeatureIds> =
+  | (FeatureEntryBase<TFeatureId> & {
+      structural: true;
+    })
+  | (FeatureEntryBase<TFeatureId> & {
+      structural: false;
+      onIgnore: (generate: Generate) => void; // allowed only here
+    });
+
+export type TFeatureRecord = {
+  [k in FeatureIds]: FeatureEntry<k>;
 };
 
 
 export type ModelFeatureSupportRecord = {
   [k in FeatureIds]: boolean;
 }
-
 
 // Features that fallback must provide a fallback function.
 type FeatureHandlerFallback<TFeatureId extends FeatureIds> = {

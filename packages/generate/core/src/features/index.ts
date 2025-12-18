@@ -1,14 +1,14 @@
 import Generate from "../generate";
-import FeatureRecord, { FeatureIds } from "./record";
+import { FeatureIds, FeatureRecord } from "./record";
 import defaultFeatureHandlers from "./default-feature-handlers";
 import { keys } from "../utils.ts";
 
-export type FeatureEntry = {
+export type FeatureEntry<TFeatureId extends FeatureIds> = {
   name: string;
   description: string;
-  incompatibleWith?: string[];
+  incompatibleWith?: Exclude<FeatureIds, TFeatureId>[];
   existenceChecker: (generate: Generate) => boolean;
-  structural: Boolean;
+  structural: boolean;
 };
 
 

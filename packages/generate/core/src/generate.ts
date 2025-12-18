@@ -89,7 +89,7 @@ class Generate{
   }
 
   clone(){
-
+    return new Generate(getGenerateForm(this));
   }
 }
 

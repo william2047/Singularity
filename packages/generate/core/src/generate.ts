@@ -1,9 +1,9 @@
 import GenerateModel from "./model/model";
 import { FeatureIds, FeatureRecord } from "./features";
-import { mergeSettings, settingsConstructor } from "./settings/opperations";
+import { mergeSettings, settingsConstructor } from "./settings/operations";
 import { Settings } from "./settings/internal";
 import { SettingsAddition, SettingsSchema } from "./settings/input";
-import { appendModelMessagesToPrompt, appendUserMessagesToPrompt, Prompt, promptConstructor } from "./prompt/opperations";
+import { appendModelMessagesToPrompt, appendUserMessagesToPrompt, Prompt, promptConstructor } from "./prompt/operations";
 import { GenerateForm, getGenerateForm } from "./form";
 import GenerateOutput from "./output";
 import { ContentInput } from "./prompt/input";

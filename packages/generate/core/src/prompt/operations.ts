@@ -1,13 +1,8 @@
 import z from "zod";
-import { ContentInput, ContentInputSchema, MessageInput, MessageInputSchema } from "./input";
-import { promptCreate, Prompt, promptAppendMessages } from "./internal";
-import { ContentForm, MessageForm } from "./form";
+import { ContentForm, ContentInput, ContentInputSchema, MessageForm, MessageInput, MessageInputSchema, Prompt } from "./messages";
+import { promptAppendMessages } from "./internal";
 
-export function promptConstructor(messages: MessageInput[] | MessageForm[]): Prompt {
-	const parsedMessages = z.array(MessageInputSchema).parse(messages);
 
-	return promptCreate(parsedMessages)
-}
 
 export function appendMessagesToPrompt(prompt: Prompt, ...message: MessageInput[] | MessageForm[]): Prompt {
 	const parsedMessages = z.array(MessageInputSchema).parse(message);

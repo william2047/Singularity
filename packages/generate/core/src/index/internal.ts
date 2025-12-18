@@ -1,8 +1,8 @@
 import Generate from "../generate";
 import { ModelFeatureSupportRecord, PartialFeatureHandlers } from "../features/";
 import { GenerateModel} from "../model";
-import { } from "../settings/opperations";
-import { Prompt } from "../prompt/opperations"
+import { } from "../settings/operations";
+import { Prompt } from "../prompt/operations"
 import { Message, Content } from "../prompt/internal"
 import GenerateOutput from "../output"
 

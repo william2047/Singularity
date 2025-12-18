@@ -1,8 +1,8 @@
 import z from "zod";
+import { Role } from "./internal";
 
 
 export const RoleSchema = z.enum(["user", "model"]);
-export type Role = z.infer<typeof RoleSchema>;
 
 export const TextContentSchema = z.object({
   type: z.literal("text"),

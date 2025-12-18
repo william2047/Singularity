@@ -1,5 +1,5 @@
 import z, { parse } from "zod";
-import { ContentInput, ContentInputSchema, MessageInput, MessageInputSchema } from "./user";
+import { ContentInput, ContentInputSchema, MessageInput, MessageInputSchema } from "./input";
 import { promptCreate, Prompt, promptAppendMessages } from "./internal";
 import { ContentForm, MessageForm } from "./form";
 

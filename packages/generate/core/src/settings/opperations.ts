@@ -1,6 +1,6 @@
 import { SettingsForm } from "./form";
 import { Settings } from "./internal";
-import { SettingsAddition, SettingsAdditionInputSchema, SettingsSchema } from "./user";
+import { SettingsAddition, SettingsAdditionInputSchema, SettingsSchema } from "./input";
 
 
 /**

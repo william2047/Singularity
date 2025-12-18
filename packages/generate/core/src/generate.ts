@@ -1,12 +1,12 @@
 import GenerateModel from "./model/model";
 import { FeatureIds, FeatureRecord } from "./features";
-import { mergeSettings, settingsConstructor } from "./settings";
+import { mergeSettings, settingsConstructor } from "./settings/opperations";
 import { Settings } from "./settings/internal";
-import { SettingsAddition, SettingsSchema } from "./settings/user";
-import { appendModelMessagesToPrompt, appendUserMessagesToPrompt, Prompt, promptConstructor } from "./prompt";
+import { SettingsAddition, SettingsSchema } from "./settings/input";
+import { appendModelMessagesToPrompt, appendUserMessagesToPrompt, Prompt, promptConstructor } from "./prompt/opperations";
 import { GenerateForm, getGenerateForm } from "./form";
 import GenerateOutput from "./output";
-import { ContentInput } from "./prompt/user";
+import { ContentInput } from "./prompt/input";
 import { keys } from "./utils.ts";
 
 

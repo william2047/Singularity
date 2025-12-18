@@ -1,4 +1,4 @@
-import z, { parse } from "zod";
+import z from "zod";
 import { ContentInput, ContentInputSchema, MessageInput, MessageInputSchema } from "./input";
 import { promptCreate, Prompt, promptAppendMessages } from "./internal";
 import { ContentForm, MessageForm } from "./form";
@@ -31,9 +31,4 @@ export function appendModelMessagesToPrompt(prompt: Prompt, ...content: ContentI
 		content: parsedContent,
 	} as const;
 	return promptAppendMessages(prompt, message);
-}
-
-
-export {
-	type Prompt,
 }

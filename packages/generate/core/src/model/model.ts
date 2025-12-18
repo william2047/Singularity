@@ -5,17 +5,17 @@ import GenerateOutput from "../output";
 
 function handleFeatures(
   generate: Generate,
-  featureHandler: FeatureHandlers,
-  featureSupportRecord: ModelFeatureSupportRecord
+  modelFeatureHandler: FeatureHandlers,
+  modelFeatureSupportRecord: ModelFeatureSupportRecord
 ) {
   const usedFeatures = generate.getUsedFeatures();
 
   for (const featureId of usedFeatures) {
-    const isSupported = featureSupportRecord[featureId] ?? false;
+    const isSupported = modelFeatureSupportRecord[featureId] ?? false;
 
     if(isSupported) continue;
 
-    const onUnsupported = featureHandler[featureId].onUnsupported;
+    const onUnsupported = modelFeatureHandler[featureId].onUnsupported;
 
     // If error, throw error
     if(onUnsupported ===  "error"){
@@ -34,7 +34,7 @@ function handleFeatures(
 
     // If fallback, call the fallback function
     else if(onUnsupported === "fallback"){
-      const feature = featureHandler[featureId];
+      const feature = modelFeatureHandler[featureId];
       feature.fallbackFn(generate)
     }
   }

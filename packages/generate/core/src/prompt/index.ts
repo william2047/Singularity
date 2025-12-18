@@ -1,20 +1,21 @@
 import z, { parse } from "zod";
 import { ContentInput, ContentInputSchema, MessageInput, MessageInputSchema } from "./user";
 import { promptCreate, Prompt, promptAppendMessages } from "./internal";
+import { ContentForm, MessageForm } from "./form";
 
-export function promptConstructor(messages: MessageInput[]): Prompt {
+export function promptConstructor(messages: MessageInput[] | MessageForm[]): Prompt {
 	const parsedMessages = z.array(MessageInputSchema).parse(messages);
 
 	return promptCreate(parsedMessages)
 }
 
-export function appendMessagesToPrompt(prompt: Prompt, ...message: MessageInput[]): Prompt {
+export function appendMessagesToPrompt(prompt: Prompt, ...message: MessageInput[] | MessageForm[]): Prompt {
 	const parsedMessages = z.array(MessageInputSchema).parse(message);
 
 	return promptAppendMessages(prompt, ...parsedMessages);
 }
 
-export function appendUserMessagesToPrompt(prompt: Prompt, ...content: ContentInput[]): Prompt{
+export function appendUserMessagesToPrompt(prompt: Prompt, ...content: ContentInput[] | ContentForm[]): Prompt{
 	const parsedContent = ContentInputSchema.parse(content);
 	const message = {
 		role: "user",
@@ -23,7 +24,7 @@ export function appendUserMessagesToPrompt(prompt: Prompt, ...content: ContentIn
 	return promptAppendMessages(prompt, message);
 }
 
-export function appendModelMessagesToPrompt(prompt: Prompt, ...content: ContentInput[]): Prompt{
+export function appendModelMessagesToPrompt(prompt: Prompt, ...content: ContentInput[] | ContentForm[]): Prompt{
 	const parsedContent = ContentInputSchema.parse(content);
 	const message = {
 		role: "model",

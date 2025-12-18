@@ -1,10 +1,10 @@
 import GenerateModel from "./model/model";
 import { FeatureIds, FeatureRecord } from "./features";
-import { mergeSettings } from "./settings";
+import { mergeSettings, settingsConstructor } from "./settings";
 import { Settings } from "./settings/internal";
 import { SettingsAddition, SettingsSchema } from "./settings/user";
 import { appendModelMessagesToPrompt, appendUserMessagesToPrompt, Prompt, promptConstructor } from "./prompt";
-import { getGenerateForm } from "./form";
+import { GenerateForm, getGenerateForm } from "./form";
 import GenerateOutput from "./output";
 import { ContentInput } from "./prompt/user";
 import { keys } from "./utils.ts";
@@ -16,9 +16,9 @@ class Generate{
   prompt: Prompt;
   settings: Settings;
 
-  constructor(){
-    this.prompt = promptConstructor([]);
-    this.settings = {};
+  constructor(form?: GenerateForm){
+    this.prompt = promptConstructor(form?.prompt?.messages ?? []);
+    this.settings = settingsConstructor(form?.settings ?? {});
   }
 
   async run(model: GenerateModel): Promise<GenerateOutput> {
@@ -86,6 +86,10 @@ class Generate{
 
   getForm(){
     return getGenerateForm(this);
+  }
+
+  clone(){
+
   }
 }
 

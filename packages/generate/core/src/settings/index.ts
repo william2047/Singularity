@@ -1,3 +1,4 @@
+import { SettingsForm } from "./form";
 import { Settings } from "./internal";
 import { SettingsAddition, SettingsAdditionInputSchema, SettingsSchema } from "./user";
 
@@ -34,4 +35,10 @@ export function mergeSettings(initialSettings: Settings, newSettings: SettingsAd
 
 
   return mergedSettings;
+}
+
+
+
+export function settingsConstructor(settings: Settings | SettingsForm): Settings {
+  return SettingsSchema.parse(settings);
 }

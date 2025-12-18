@@ -1,12 +1,11 @@
 import GenerateModel from "./model/model";
 import { FeatureIds, FeatureRecord } from "./features";
-import { mergeSettings, settingsConstructor } from "./settings/operations";
 import { Settings } from "./settings/internal";
-import { SettingsAddition, SettingsSchema } from "./settings/input";
 import { GenerateForm, getGenerateForm } from "./form";
 import GenerateOutput from "./output";
 import { keys } from "./utils.ts";
 import { Prompt, promptConstructor, appendUserMessagesToPrompt, ContentInput, appendModelMessagesToPrompt } from "./prompt";
+import { mergeSettings, SettingsAddition, settingsConstructor } from "./settings";
 
 class Generate{
   static features = FeatureRecord;

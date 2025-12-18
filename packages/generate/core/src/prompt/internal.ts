@@ -51,15 +51,15 @@ export function promptAppendContent(prompt: Prompt, role: Role, ...content: Cont
 }
 
 
-export type TextContentSnapshot = TextContent;
+export type TextContentForm = TextContent;
 
-export type ContentSnapshot = 
-	| TextContentSnapshot;
+export type ContentForm = 
+	| TextContentForm;
 
-export type MessageSnapshot = {
+export type MessageForm = {
 	role: Role;
-	content: ContentSnapshot[];
+	content: ContentForm[];
 }
-export type PromptSnapshot = {
-	messages: MessageSnapshot[];
+export type PromptForm = {
+	messages: MessageForm[];
 }

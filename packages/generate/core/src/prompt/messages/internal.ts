@@ -1,5 +1,5 @@
 type ContentBase<Type extends string, Val> = {
-	type: string;
+	type: Type;
 	value: Val;
 }
 

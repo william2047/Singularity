@@ -1,8 +1,8 @@
 import Generate from "./generate";
-import { GenerateSnapshot } from "./snapshot";
+import { GenerateForm } from "./form";
 
 
 
-export function generateFromSnapshot(snapshot: GenerateSnapshot): Generate {
+export function generateFromForm(snapshot: GenerateForm): Generate {
   return new Generate();
 }

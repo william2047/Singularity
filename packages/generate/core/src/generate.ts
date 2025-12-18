@@ -4,7 +4,7 @@ import { mergeSettings } from "./settings";
 import { Settings } from "./settings/internal";
 import { SettingsAddition, SettingsSchema } from "./settings/user";
 import { appendModelMessagesToPrompt, appendUserMessagesToPrompt, Prompt, promptConstructor } from "./prompt";
-import { generateSnapshot } from "./snapshot";
+import { getGenerateForm } from "./form";
 import GenerateOutput from "./output";
 import { ContentInput } from "./prompt/user";
 import { keys } from "./utils.ts";
@@ -85,7 +85,7 @@ class Generate{
   
 
   getSnapshot(){
-    return generateSnapshot(this);
+    return getGenerateForm(this);
   }
 }
 

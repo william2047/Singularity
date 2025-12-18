@@ -1,8 +1,9 @@
+export type * from "./messages/internal";
+export type * from "./messages/form";
+export type * from "./messages/input";
+export * as Message from "./messages/operations";
 
-import * as Form from "./form";
-import * as Internal from "./internal";
-import * as Operations from "./operations";
+export type * from "./form";
+export type * from "./internal";
+export * from "./operations";
 
-export const Prompt = { ...Form, ...Internal, ...Operations };
-
-export * as Message from "./messages";

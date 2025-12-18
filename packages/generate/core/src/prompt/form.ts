@@ -1,4 +1,4 @@
-import { MessageForm } from "./messages";
+import { MessageForm } from "./messages/form";
 
 export type PromptForm = {
 	messages: MessageForm[];

@@ -17,10 +17,6 @@ export type Message = {
 }
 
 
-export type Prompt = {
-	messages: Message[];
-}
-
 
 export function promptMessageCreate(content: Content[], role: Role): Message {
 	return {
@@ -30,8 +26,3 @@ export function promptMessageCreate(content: Content[], role: Role): Message {
 }
 
 
-export function promptCreate(messages: Message[]): Prompt {
-	return {
-		messages: messages,
-	};
-}

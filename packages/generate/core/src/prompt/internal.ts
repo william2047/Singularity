@@ -1,7 +1,13 @@
-import { Content, Message, promptMessageCreate, Role } from "./messages";
+import { Content, Message, promptMessageCreate, Role } from "./messages/internal";
 
 export type Prompt = {
 	messages: Message[];
+}
+
+export function promptCreate(messages: Message[]): Prompt {
+	return {
+		messages: messages,
+	};
 }
 
 export function promptAppendMessages(prompt: Prompt, ...messages: Message[]): Prompt {

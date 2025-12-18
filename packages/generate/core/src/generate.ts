@@ -6,9 +6,7 @@ import { SettingsAddition, SettingsSchema } from "./settings/input";
 import { GenerateForm, getGenerateForm } from "./form";
 import GenerateOutput from "./output";
 import { keys } from "./utils.ts";
-import { ContentInput, Prompt, promptConstructor } from "./prompt/messages";
-import { appendModelMessagesToPrompt, appendUserMessagesToPrompt } from "./prompt/operations";
-
+import { Prompt, promptConstructor, appendUserMessagesToPrompt, ContentInput, appendModelMessagesToPrompt } from "./prompt";
 
 class Generate{
   static features = FeatureRecord;

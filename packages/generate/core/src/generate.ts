@@ -6,7 +6,7 @@ import { SettingsAddition, SettingsSchema } from "./settings/user";
 import { appendModelMessagesToPrompt, appendUserMessagesToPrompt, Prompt, promptConstructor } from "./prompt";
 import { generateSnapshot } from "./snapshot";
 import GenerateOutput from "./output";
-import { ContentInput } from "./prompt/input";
+import { ContentInput } from "./prompt/user";
 import { keys } from "./utils.ts";
 
 

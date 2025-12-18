@@ -49,17 +49,3 @@ export function promptAppendContent(prompt: Prompt, role: Role, ...content: Cont
 		promptMessageCreate(content, role)
 	);
 }
-
-
-export type TextContentForm = TextContent;
-
-export type ContentForm = 
-	| TextContentForm;
-
-export type MessageForm = {
-	role: Role;
-	content: ContentForm[];
-}
-export type PromptForm = {
-	messages: MessageForm[];
-}

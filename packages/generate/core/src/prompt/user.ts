@@ -44,4 +44,3 @@ export type MessageInput = {
   role: Role;
   content: ContentInput;
 }
-

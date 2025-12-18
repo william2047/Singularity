@@ -12,7 +12,7 @@ abstract class GenerateModel{
   
   // Map of feature support for this model
   abstract featureSupportRecord: ModelFeatureSupportRecord;
-  featureHandler: PartialFeatureHandlers = {};
+  featureHandler: FeatureHandlers;
   
   abstract generateInternal(generate: Generate): Promise<GenerateOutput>;
 

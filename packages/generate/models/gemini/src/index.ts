@@ -49,7 +49,7 @@ export class GeminiModel extends GenerateModel{
   apiKey: string;
 
   constructor(apiKey: string, featureHandler?: PartialFeatureHandlers){
-    super();
+    super(featureHandler);
     this.apiKey = apiKey;
   }
 

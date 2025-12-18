@@ -37,23 +37,64 @@ export type FeatureHandler<TFeatureId extends FeatureIds> =
 
 
 export type FeatureHandlers = {
-  [K in FeatureIds]: FeatureHandler;
+  [K in FeatureIds]: FeatureHandler<K>;
 };
 
 export type PartialFeatureHandlers = {
-  [K in FeatureIds]?: Partial<FeatureHandler>;
-};  
+  [K in FeatureIds]?: FeatureHandler<K>;
+};
 
 
+function normalizeFeatureHandler<TFeatureId extends FeatureIds>(
+  featureId: TFeatureId,
+  currentHandler: FeatureHandler<TFeatureId>,
+  mergeHandler: Partial<FeatureHandler<TFeatureId>> | undefined
+): FeatureHandler<TFeatureId>{
+
+  if(!mergeHandler) return currentHandler;
+
+  const onUnsupported = mergeHandler.onUnsupported ?? currentHandler.onUnsupported;
+  const fallbackFn = mergeHandler.fallbackFn ?? currentHandler.fallbackFn;
+
+  if(onUnsupported === 'fallback' && !fallbackFn){
+    throw new Error(`Feature set to fallback but no fallback function provided: ${featureId}`);
+  }
+  
+  // If a feature is structural, it cannot be ignored.
+  if(FeatureRecord[featureId].structural && onUnsupported === 'ignore'){
+    throw new Error(`Cannot ignore structural feature: ${featureId}`);
+  }
+
+  return {
+    onUnsupported,
+    fallbackFn,
+  } as FeatureHandler<TFeatureId>;
+}
+
+
+// Helper to set feature handler while making TypeScript happy
+function setFeatureHandler<K extends FeatureIds>(
+  target: FeatureHandlers,
+  key: K,
+  value: FeatureHandler<K>
+) {
+  (target as Record<FeatureIds, FeatureHandler<FeatureIds>>)[key] = value;
+}
+
+
+// Merges multiple partial feature handlers into a full feature handler.
 export function mergeFeatureHandlers(fullFeatureHandler: FeatureHandlers, ...featureHandlers: PartialFeatureHandlers[]): FeatureHandlers {
   const mergedHandlers = { ...fullFeatureHandler };
-
   for(const partialhandler of featureHandlers){
+
     for(const featureId of keys(partialhandler)){
-      mergedHandlers[featureId] = {
-        ...mergedHandlers[featureId],
-        ...partialhandler[featureId],
-      } as FeatureHandler;
+      const normalizedHandler = normalizeFeatureHandler(
+        featureId,
+        mergedHandlers[featureId] as FeatureHandler<typeof featureId>,
+        partialhandler[featureId] as FeatureHandler<typeof featureId>,
+      );
+
+      setFeatureHandler(mergedHandlers, featureId, normalizedHandler);
     }
   }
 

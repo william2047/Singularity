@@ -30,7 +30,7 @@
     "allowUnreachableCode": false,
 
     /* Module hygiene */
-    "verbatimModuleSyntax": true,
+    // "verbatimModuleSyntax": true,
     "importsNotUsedAsValues": "error",
     "preserveValueImports": true,
 

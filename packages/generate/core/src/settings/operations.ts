@@ -1,6 +1,6 @@
 import { SettingsForm } from "./form";
 import { Settings } from "./internal";
-import { SettingsAddition, SettingsAdditionInputSchema, SettingsSchema } from "./input";
+import { SettingsAddition, SettingsAdditionInputSchema, SettingsStripUndefinedSchema } from "./input";
 
 
 /**
@@ -14,7 +14,7 @@ import { SettingsAddition, SettingsAdditionInputSchema, SettingsSchema } from ".
  *          excluding any properties explicitly marked as `"unset"`.
  */
 export function mergeSettings(initialSettings: Settings, newSettings: SettingsAddition): Settings {
-  const parsedInitialSettings = SettingsSchema.parse(initialSettings);
+  const parsedInitialSettings = SettingsStripUndefinedSchema.parse(initialSettings);
   const parsedNewSettings = SettingsAdditionInputSchema.parse(newSettings);
   
   const mergedSettings: Settings = { ...parsedInitialSettings };
@@ -40,5 +40,5 @@ export function mergeSettings(initialSettings: Settings, newSettings: SettingsAd
 
 
 export function settingsConstructor(settings: Settings | SettingsForm): Settings {
-  return SettingsSchema.parse(settings);
+  return SettingsStripUndefinedSchema.parse(settings);
 }

@@ -11,6 +11,12 @@ export const SettingsSchema = z.object({
 })
 type SettingsShape = typeof SettingsSchema.shape
 
+export const SettingsStripUndefinedSchema = SettingsSchema.transform((data) => {
+  return Object.fromEntries(
+    Object.entries(data).filter(([_, value]) => value !== undefined)
+  );
+});
+
 
 export const SettingsAdditionInputSchema = z.object(
   Object.fromEntries(

@@ -14,8 +14,3 @@ export type ModelSetSpec<TAuthoringSpec extends object> = {
   providerId: string;
   models: ModelSpec<TAuthoringSpec>[];
 }
-
-export type ModelSet = {
-  providerId: string;
-  models: ModelClass[];
-}

@@ -87,9 +87,11 @@ const geminiModelSpec = {
     },
   ]
 
-} satisfies GeminiModelSpec;
-
+} as const satisfies GeminiModelSpec;
 
 const GeminiModels = GeminiModelClassFactory(geminiModelSpec);
 
-export default GeminiModels;
+export const Gemini_2_5_Flash = GeminiModels["GEMINI_2_5_FLASH"];
+export const Gemini_2_5_Pro = GeminiModels["GEMINI_2_5_PRO"];
+export const Gemini_3_Pro_Preview = GeminiModels["GEMINI_3_PRO_PREVIEW"];
+export const Gemini_3_Flash_Preview = GeminiModels["GEMINI_3_FLASH_PREVIEW"];

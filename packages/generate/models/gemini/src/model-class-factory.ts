@@ -1,4 +1,4 @@
-import { ModelSetSpec, ModelSet, GenerateModel, Generate, GenerateOutput, Content, PartialFeatureHandlers, ModelClass } from "@generate/core/internal";
+import { ModelSetSpec, GenerateModel, Generate, GenerateOutput, Content, PartialFeatureHandlers, ModelClass } from "@generate/core/internal";
 
 type Range = readonly [number, number];
 
@@ -21,11 +21,11 @@ export function createRangeMap(
 }
 
 
-type AuthoringSpec = {
+type GeminiAuthoringSpec = {
   TemperatureRange: BidirectionalMap;
 }
 
-export type GeminiModelSpec = ModelSetSpec<AuthoringSpec>;
+export type GeminiModelSpec = ModelSetSpec<GeminiAuthoringSpec>;
 
 
 function contentToGeminiPart(content: Content): any{
@@ -49,91 +49,106 @@ function geminiPartToContent(part: any): Content {
   throw new Error(`Unsupported Gemini part: ${JSON.stringify(part)}`);
 }
 
+type ModelSet<TModelSpec extends ModelSetSpec<any>> = {
+  [k in TModelSpec["models"][number]["modelLabel"]]: ModelClass;
+}
 
+function GeminiModelConstructor<
+  const TModel extends GeminiModelSpec["models"][number],
+>(model: TModel, providerId: string){
 
-export function GeminiModelClassFactory(ModelSetSpec: GeminiModelSpec): ModelSet {
+  const authoring = model.authoring;
 
-  const modelClasses: ModelClass[] = [];
-  
-  for(const model of ModelSetSpec.models){
+  class ModelClass extends GenerateModel {
+    readonly providerId = providerId;
+    readonly modelId = model.modelId;
 
-    const authoring = model.authoring ?? undefined;
+    apiKey: string;
 
-    class ModelClass extends GenerateModel{
-      readonly providerId = ModelSetSpec.providerId;
-      readonly modelId = model.modelId;
+    featureSupportRecord = {
+      ...model.featureSupportRecord,
+    };
 
-      apiKey: string;
-      
-      featureSupportRecord = {
-        ...model.featureSupportRecord,
-      };
-
-
-      constructor(apiKey: string, featureHandler?: PartialFeatureHandlers){
-        super(featureHandler);
-        this.apiKey = apiKey;
-      }
-
-      buildRequestBody (generate: Generate) {
-        
-        const body = {
-          contents : generate.prompt.messages.map((msg) => ({
-            role: msg.role,
-            parts: msg.content.map(part => contentToGeminiPart(part)),
-          })),
-          generationConfig: {}
-        } as any
-
-        if(generate.settings.temperature){
-          body.generationConfig["temperature"] = authoring.TemperatureRange.forward(generate.settings.temperature);
-        }
-        
-        return body;
-      }
-
-      async generateInternal(generate: Generate): Promise<GenerateOutput> {
-        const body = this.buildRequestBody(generate);
-
-        const request = {
-          method: "POST",
-          headers: {
-          "x-goog-api-key": this.apiKey,
-          "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-        };
-    
-        const req = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/${this.modelId}:generateContent`,
-          request
-        );
-    
-        if (!req.ok) {
-          throw new Error(`Gemini API request failed with status ${req.status}: ${await req.text()}`);
-        }
-    
-        const res = await req.json();
-    
-    
-        return {
-          modelId: this.modelId,
-          providerId: this.providerId,
-          providerData: {
-            request: body,
-            response: res
-          },
-          message: res.candidates[0].content.parts.map((part: any) => geminiPartToContent(part)),
-        }
-    
-      }
+    constructor(apiKey: string, featureHandler?: PartialFeatureHandlers) {
+      super(featureHandler);
+      this.apiKey = apiKey;
     }
 
-    modelClasses.push(ModelClass);
+    buildRequestBody(generate: Generate) {
+      const body = {
+        contents: generate.prompt.messages.map((msg) => ({
+          role: msg.role,
+          parts: msg.content.map((part) => contentToGeminiPart(part)),
+        })),
+        generationConfig: {},
+      } as any;
+
+      if (generate.settings.temperature) {
+        // (also: consider guarding authoring existence; left as-is)
+        body.generationConfig["temperature"] =
+          authoring.TemperatureRange.forward(generate.settings.temperature);
+      }
+
+      return body;
+    }
+
+    async generateInternal(generate: Generate): Promise<GenerateOutput> {
+      const body = this.buildRequestBody(generate);
+
+      const request = {
+        method: "POST",
+        headers: {
+          "x-goog-api-key": this.apiKey,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      };
+
+      const req = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${this.modelId}:generateContent`,
+        request
+      );
+
+      if (!req.ok) {
+        throw new Error(
+          `Gemini API request failed with status ${req.status}: ${await req.text()}`
+        );
+      }
+
+      const res = await req.json();
+
+      return {
+        modelId: this.modelId,
+        providerId: this.providerId,
+        providerData: {
+          request: body,
+          response: res,
+        },
+        message: res.candidates[0].content.parts.map((part: any) =>
+          geminiPartToContent(part)
+        ),
+      };
+    }
   }
 
-  return {
-    providerId: ModelSetSpec.providerId,
-    models: modelClasses
+  return ModelClass;
+}
+
+
+export function GeminiModelClassFactory<
+  const TModelSpec extends GeminiModelSpec,
+>(
+  ModelSetSpec: TModelSpec
+): ModelSet<TModelSpec>{
+
+  const ModelSet = {} as ModelSet<TModelSpec>;
+
+  for (const model of ModelSetSpec.models) {
+
+    const ModelClass = GeminiModelConstructor(model, ModelSetSpec.providerId);
+
+    ModelSet[model.modelLabel as TModelSpec["models"][number]["modelLabel"]] = ModelClass;
   }
+
+  return ModelSet;
 }

@@ -2,25 +2,27 @@
   "name": "@generate/model-gemini",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc -b",
-    "dev": "tsc -b -w"
+    "generate": "tsx scripts/generator.ts",
+    "build": "pnpm generate && tsc -b",
+    "dev": "pnpm generate && tsc -b -w"
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "default": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "@generate/core": "workspace:*"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "type": "module"
+  "license": "ISC"
 }

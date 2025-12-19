@@ -1,0 +1,20 @@
+import { ModelFeatureSupportRecord } from "../features";
+import GenerateModel from "./model";
+
+export type ModelClass = new (...args: any[]) => GenerateModel;
+
+export type ModelSpec<TAuthoringSpec extends object> = {
+  modelId: string;
+  featureSupportRecord: ModelFeatureSupportRecord;
+  authoring: TAuthoringSpec;
+}
+
+export type ModelSetSpec<TAuthoringSpec extends object> = {
+  providerId: string;
+  models: ModelSpec<TAuthoringSpec>[];
+}
+
+export type ModelSet = {
+  providerId: String;
+  models: ModelClass[];
+}

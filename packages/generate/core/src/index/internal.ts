@@ -1,16 +1,17 @@
 import Generate from "../generate";
 import GenerateOutput from "../output"
-import { GenerateModel} from "../model";
+import { GenerateModel } from "../model";
 import { ModelFeatureSupportRecord, PartialFeatureHandlers } from "../features/";
 
 export type * from "../prompt";
 export type * from "../settings"
+export type * from "../model"
 
 
 export {
   Generate,
-  GenerateModel,
   type GenerateOutput,
+  GenerateModel,
 
   type ModelFeatureSupportRecord,
   type PartialFeatureHandlers,

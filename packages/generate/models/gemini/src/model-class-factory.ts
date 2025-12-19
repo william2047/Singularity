@@ -8,15 +8,15 @@ type BidirectionalMap = {
 };
 
 
-function createRangeMap(
+export function createRangeMap(
   [a1, a2]: Range,
   [b1, b2]: Range
 ): BidirectionalMap {
   const scale = (b2 - b1) / (a2 - a1);
 
   return {
-    forward: (x) => b1 + (x - a1) * scale,
-    inverse: (y) => a1 + (y - b1) / scale,
+    forward: (x) => parseFloat((b1 + (x - a1) * scale).toFixed(1)),
+    inverse: (y) => parseFloat((a1 + (y - b1) / scale).toFixed(1)),
   };
 }
 
@@ -25,6 +25,7 @@ type AuthoringSpec = {
   TemperatureRange: BidirectionalMap;
 }
 
+export type GeminiModelSpec = ModelSetSpec<AuthoringSpec>;
 
 
 function contentToGeminiPart(content: Content): any{
@@ -50,7 +51,7 @@ function geminiPartToContent(part: any): Content {
 
 
 
-export function GeminiModelClassFactory(ModelSetSpec: ModelSetSpec<AuthoringSpec>): ModelSet {
+export function GeminiModelClassFactory(ModelSetSpec: GeminiModelSpec): ModelSet {
 
   const modelClasses: ModelClass[] = [];
   

@@ -1,4 +1,4 @@
-import { Content } from "./prompt/internal";
+import { Content } from "./prompt";
 
 type GenerateOutput = {
   providerId: string;

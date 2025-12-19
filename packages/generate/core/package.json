@@ -12,9 +12,9 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index/public.d.ts",
-      "import": "./dist/index/public.mjs",
-      "require": "./dist/index/public.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
     },
     "./internal": {
       "types": "./dist/index/internal.d.ts",

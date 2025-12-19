@@ -5,6 +5,7 @@ export type ModelClass = new (...args: any[]) => GenerateModel;
 
 export type ModelSpec<TAuthoringSpec extends object> = {
   modelId: string;
+  modelLabel: string;
   featureSupportRecord: ModelFeatureSupportRecord;
   authoring: TAuthoringSpec;
 }
@@ -15,6 +16,6 @@ export type ModelSetSpec<TAuthoringSpec extends object> = {
 }
 
 export type ModelSet = {
-  providerId: String;
+  providerId: string;
   models: ModelClass[];
 }

@@ -53,7 +53,7 @@ function geminiModelFile(model: GeminiModelSet["models"][number]): string {
 
 let fileContent = `
 import { GeminiModel } from "../base";
-import Generate from "@generate/core/"`
+import Generate from "@generate/core"`
 
 for (const model of geminiModelSet.models) {
 

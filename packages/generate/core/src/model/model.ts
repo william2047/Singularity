@@ -66,7 +66,7 @@ abstract class GenerateModel{
     handleFeatures(effectiveGenerate, this.featureHandler, this.featureSupportRecord);
     
     
-    return this.generateInternal(generate);
+    return this.generateInternal(effectiveGenerate);
   }
   
 }

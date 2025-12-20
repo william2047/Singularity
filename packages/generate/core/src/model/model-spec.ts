@@ -10,7 +10,7 @@ export type ModelSpec<TAuthoringSpec extends object> = {
   authoring: TAuthoringSpec;
 }
 
-export type ModelSetSpec<TAuthoringSpec extends object> = {
+export type ModelSet<TAuthoringSpec extends object> = {
   providerId: string;
   models: ModelSpec<TAuthoringSpec>[];
 }

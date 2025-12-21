@@ -1,7 +1,7 @@
 import { FeatureIds, FeatureRecord } from "./features";
 import { Settings } from "./settings/internal";
 import { GenerateForm, getGenerateForm } from "./form";
-import { keys } from "./utils.ts";
+import { keys } from "./utils";
 import { Prompt, promptConstructor, appendUserMessagesToPrompt, ContentInput, appendModelMessagesToPrompt } from "./prompt";
 import { mergeSettings, SettingsAddition, settingsConstructor } from "./settings";
 import { GenerateOutput } from "./output";

@@ -1,7 +1,7 @@
 import Generate from "../generate";
 import { FeatureIds, FeatureRecord } from "./record";
 import defaultFeatureHandlers from "./default-feature-handlers";
-import { keys } from "../utils.ts";
+import { keys } from "../utils";
 
 
 type FeatureEntryBase<TFeatureId extends FeatureIds> = {

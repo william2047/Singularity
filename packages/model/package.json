@@ -7,8 +7,8 @@
     "access": "restricted"
   },
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc -b",
     "dev": "tsc -b -w"
@@ -16,7 +16,9 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "browser": "./dist/index.js"
     }
   },
   "files": [

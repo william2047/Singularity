@@ -1,4 +1,4 @@
-import { Content } from "./prompt";
+import { ContentForm } from "./prompt";
 
 export type GenerateOutput = {
   providerId: string;
@@ -9,5 +9,5 @@ export type GenerateOutput = {
     response: unknown     // exact provider response
   }
 
-  message: Content[];
+  message: ContentForm[];
 }

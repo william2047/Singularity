@@ -1,5 +1,5 @@
 import  { ModelSet, GenerateModel } from "@singularity/model";
-import type { Content, GenerateForm, GenerateOutput } from "@singularity/core";
+import type { ContentForm, GenerateForm, GenerateOutput } from "@singularity/core";
 
 type Range = readonly [number, number];
 
@@ -29,7 +29,7 @@ export abstract class GeminiModel extends GenerateModel{
     this.apiKey = apiKey;
   }
 
-  contentToGeminiPart(content: Content): any{
+  contentToGeminiPart(content: ContentForm): any{
     switch(content.type){
       case "text":
         return { text: content.value };
@@ -39,7 +39,7 @@ export abstract class GeminiModel extends GenerateModel{
     }
   }
   
-  geminiPartToContent(part: any): Content {
+  geminiPartToContent(part: any): ContentForm {
     if(part.text){
       return {
         type: "text",

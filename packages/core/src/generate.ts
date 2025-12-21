@@ -1,11 +1,14 @@
-import GenerateModel from "./model/model";
 import { FeatureIds, FeatureRecord } from "./features";
 import { Settings } from "./settings/internal";
 import { GenerateForm, getGenerateForm } from "./form";
-import GenerateOutput from "./output";
 import { keys } from "./utils.ts";
 import { Prompt, promptConstructor, appendUserMessagesToPrompt, ContentInput, appendModelMessagesToPrompt } from "./prompt";
 import { mergeSettings, SettingsAddition, settingsConstructor } from "./settings";
+import { GenerateOutput } from "./output";
+
+type GenerateExecutable = {
+  generate(generate: Generate): Promise<GenerateOutput>;
+}
 
 class Generate{
   static features = FeatureRecord;
@@ -18,7 +21,7 @@ class Generate{
     this.settings = settingsConstructor(form?.settings ?? {});
   }
 
-  async run(model: GenerateModel): Promise<GenerateOutput> {
+  async run(model: GenerateExecutable): Promise<GenerateOutput> {
     return model.generate(this);
   }
 

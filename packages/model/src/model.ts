@@ -1,4 +1,12 @@
-import Generate from "@singularity/core"
+import Generate, {
+  defaultFeatureHandlers,
+  FeatureHandlers,
+  FeatureRecord,
+  GenerateOutput,
+  mergeFeatureHandlers,
+  ModelFeatureSupportRecord,
+  PartialFeatureHandlers
+} from "@singularity/core"
 
 function handleFeatures(
   generate: Generate,
@@ -38,7 +46,7 @@ function handleFeatures(
 }
 
 
-abstract class GenerateModel {
+export abstract class GenerateModel {
   abstract providerId: string;
   abstract readonly modelId: string;
 
@@ -67,5 +75,3 @@ abstract class GenerateModel {
   }
 
 }
-
-export default GenerateModel;

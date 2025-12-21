@@ -1,4 +1,5 @@
-import { Content, Generate, GenerateModel, GenerateOutput, ModelSet } from "@singularity/model";
+import  { ModelSet, GenerateModel } from "@singularity/model";
+import type { Content, GenerateForm, GenerateOutput } from "@singularity/core";
 
 type Range = readonly [number, number];
 
@@ -19,10 +20,9 @@ export type GeminiModelSet = ModelSet<GeminiAuthoringSpec>;
 export abstract class GeminiModel extends GenerateModel{
   readonly providerId = "gemini";
 
-  abstract buildRequestBody(generate: Generate): any;
+  abstract buildRequestBody(generate: GenerateForm): any;
   
   apiKey: string;
-  abstract modelId: string;
 
   constructor(apiKey: string) {
     super();
@@ -50,7 +50,7 @@ export abstract class GeminiModel extends GenerateModel{
     throw new Error(`Unsupported Gemini part: ${JSON.stringify(part)}`);
   }
 
-  async generateInternal(generate: Generate): Promise<GenerateOutput> {
+  async generateInternal(generate: GenerateForm): Promise<GenerateOutput> {
     const body = this.buildRequestBody(generate);
 
     const request = {

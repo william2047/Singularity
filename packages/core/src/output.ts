@@ -1,6 +1,6 @@
 import { Content } from "./prompt";
 
-type GenerateOutput = {
+export type GenerateOutput = {
   providerId: string;
   modelId: string;
 
@@ -11,5 +11,3 @@ type GenerateOutput = {
 
   message: Content[];
 }
-
-export default GenerateOutput;

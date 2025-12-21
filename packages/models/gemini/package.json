@@ -1,5 +1,5 @@
 {
-  "name": "@generate/model-gemini",
+  "name": "@singularity/model-gemini",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -20,7 +20,7 @@
     "dist"
   ],
   "dependencies": {
-    "@generate/core": "workspace:*"
+    "@singularity/core": "workspace:*"
   },
   "keywords": [],
   "author": "",

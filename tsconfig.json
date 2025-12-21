@@ -1,7 +1,7 @@
 {
   "files": [],
   "references": [
-    { "path": "packages/generate/core" },
-    { "path": "packages/generate/models/gemini" },
+    { "path": "packages/core" },
+    { "path": "packages/models/gemini" },
   ]
 }

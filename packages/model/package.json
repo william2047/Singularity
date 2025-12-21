@@ -2,6 +2,10 @@
   "name": "@singularity/model",
   "version": "1.0.0",
   "description": "",
+  "private": false,
+  "publishConfig": {
+    "access": "restricted"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

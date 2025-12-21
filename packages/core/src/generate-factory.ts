@@ -1,5 +1,5 @@
 import Generate from "./generate";
-import { GenerateForm } from "./form";
+import { type GenerateForm } from "./form";
 
 
 

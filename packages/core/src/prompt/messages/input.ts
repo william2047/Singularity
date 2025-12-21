@@ -1,5 +1,5 @@
 import z from "zod";
-import { Role } from "./internal";
+import { type Role } from "./internal";
 
 
 export const RoleSchema = z.enum(["user", "model"]);

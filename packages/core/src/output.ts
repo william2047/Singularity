@@ -1,4 +1,4 @@
-import { ContentForm } from "./prompt";
+import { type ContentForm } from "./prompt";
 
 export type GenerateOutput = {
   providerId: string;

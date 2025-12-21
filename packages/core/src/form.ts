@@ -1,6 +1,6 @@
 import Generate from "./generate";
-import { PromptForm } from "./prompt/form";
-import { SettingsForm } from "./settings/form";
+import { type PromptForm } from "./prompt/form";
+import { type SettingsForm } from "./settings/form";
 
 export type GenerateForm = {
   settings: SettingsForm;

@@ -1,4 +1,4 @@
-import { ModelFeatureSupportRecord } from "@singularity/core";
+import { type ModelFeatureSupportRecord } from "@singularity/core";
 import { GenerateModel } from "./model";
 
 export type ModelClass = new (...args: any[]) => GenerateModel;

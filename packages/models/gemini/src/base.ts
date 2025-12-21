@@ -1,4 +1,4 @@
-import  { ModelSet, GenerateModel } from "@singularity/model";
+import  { type ModelSet, GenerateModel } from "@singularity/model";
 import type { ContentForm, GenerateForm, GenerateOutput } from "@singularity/core";
 
 type Range = readonly [number, number];

@@ -1,4 +1,4 @@
 import z from "zod";
-import { MessageInput, MessageInputSchema } from "./input";
-import { MessageForm } from "./form";
+import { type MessageInput, MessageInputSchema } from "./input";
+import { type MessageForm } from "./form";
 

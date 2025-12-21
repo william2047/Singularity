@@ -1,11 +1,11 @@
 import Generate, {
   defaultFeatureHandlers,
-  FeatureHandlers,
+  type FeatureHandlers,
   FeatureRecord,
-  GenerateOutput,
+  type GenerateOutput,
   mergeFeatureHandlers,
-  ModelFeatureSupportRecord,
-  PartialFeatureHandlers
+  type ModelFeatureSupportRecord,
+  type PartialFeatureHandlers
 } from "@singularity/core"
 
 function handleFeatures(

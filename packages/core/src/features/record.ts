@@ -1,4 +1,4 @@
-import { FeatureEntry, TFeatureRecord } from ".";
+import type { TFeatureRecord } from "./features";
 
 
 export type FeatureIds = 

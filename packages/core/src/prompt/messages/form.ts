@@ -1,4 +1,4 @@
-import { Role, TextContent } from "./internal";
+import { type Role, type TextContent } from "./internal";
 
 export type TextContentForm = TextContent;
 

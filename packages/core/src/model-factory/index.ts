@@ -1,4 +1,4 @@
-import { ModelFeatureSupportRecord, PartialFeatureHandlers } from "../features";
+import { type ModelFeatureSupportRecord, type PartialFeatureHandlers } from "../features";
 
 interface ModelSpec {
   modelId: string;

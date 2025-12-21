@@ -1,4 +1,9 @@
-import { Content, Message, promptMessageCreate, Role } from "./messages/internal";
+import { 
+	type Content, 
+	type Message,
+	promptMessageCreate, 
+	type Role
+} from "./messages/internal";
 
 export type Prompt = {
 	messages: Message[];

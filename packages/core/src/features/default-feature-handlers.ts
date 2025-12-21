@@ -1,6 +1,6 @@
-import { FeatureHandlers } from ".";
+import type { FeatureHandlers } from "./features";
 
-const defaultFeatureHandlers = {
+export const defaultFeatureHandlers = {
   'settings.temperature': {
     onUnsupported: 'error',
   },
@@ -21,5 +21,3 @@ const defaultFeatureHandlers = {
   },
 
 } as const satisfies FeatureHandlers;
-
-export default defaultFeatureHandlers;

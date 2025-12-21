@@ -1,10 +1,20 @@
-import { FeatureIds, FeatureRecord } from "./features";
-import { Settings } from "./settings/internal";
-import { GenerateForm, getGenerateForm } from "./form";
+import { type FeatureIds, FeatureRecord } from "./features";
+import { type Settings } from "./settings/internal";
+import { type GenerateForm, getGenerateForm } from "./form";
 import { keys } from "./utils";
-import { Prompt, promptConstructor, appendUserMessagesToPrompt, ContentInput, appendModelMessagesToPrompt } from "./prompt";
-import { mergeSettings, SettingsAddition, settingsConstructor } from "./settings";
-import { GenerateOutput } from "./output";
+import {
+  type Prompt,
+  promptConstructor,
+  appendUserMessagesToPrompt,
+  type ContentInput,
+  appendModelMessagesToPrompt
+} from "./prompt";
+import {
+  mergeSettings,
+  type SettingsAddition,
+  settingsConstructor
+} from "./settings";
+import { type GenerateOutput } from "./output";
 
 type GenerateExecutable = {
   generate(generate: Generate): Promise<GenerateOutput>;

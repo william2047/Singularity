@@ -1,5 +1,5 @@
 import z from "zod";
-import { Settings } from "./internal";
+import { type Settings } from "./internal";
 
 
 export const SettingsSchema = z.object({

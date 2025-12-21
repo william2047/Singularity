@@ -1,3 +1,3 @@
-import { Settings } from "./internal";
+import { type Settings } from "./internal";
 
 export type SettingsForm = Settings;

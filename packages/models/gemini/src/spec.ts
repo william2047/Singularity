@@ -1,4 +1,4 @@
-import { GeminiModelSet } from "./base";
+import { type GeminiModelSet } from "./base";
 
 const temperatureRange = {
   generate: [0, 1],

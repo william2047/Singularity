@@ -2,6 +2,7 @@
   "files": [],
   "references": [
     { "path": "packages/core" },
+    { "path": "packages/model" },
     { "path": "packages/models/gemini" },
   ]
 }

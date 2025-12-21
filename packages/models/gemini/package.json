@@ -20,7 +20,7 @@
     "dist"
   ],
   "dependencies": {
-    "@singularity/core": "workspace:*"
+    "@singularity/model": "workspace:*"
   },
   "keywords": [],
   "author": "",

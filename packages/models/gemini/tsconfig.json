@@ -7,7 +7,7 @@
     "outDir": "dist"
   },
   "references": [
-    { "path": "../../core" }
+    { "path": "../../model" }
   ],
   "include": ["src"]
 }

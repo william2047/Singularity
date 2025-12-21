@@ -1,3 +1,4 @@
 packages:
-  - "packages/generate/core"
-  - "packages/generate/models/gemini"
+  - "packages/core"
+  - "packages/model"
+  - "packages/models/gemini"

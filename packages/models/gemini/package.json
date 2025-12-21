@@ -1,5 +1,5 @@
 {
-  "name": "@singularity/model-gemini",
+  "name": "@telos-ai/model-gemini",
   "version": "1.0.0",
   "description": "",
   "private": false,
@@ -26,8 +26,8 @@
     "dist"
   ],
   "dependencies": {
-    "@singularity/model": "workspace:*",
-    "@singularity/core": "workspace:*"
+    "@telos-ai/model": "workspace:*",
+    "@telos-ai/core": "workspace:*"
   },
   "keywords": [],
   "author": "",

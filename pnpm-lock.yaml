@@ -27,16 +27,16 @@ importers:
 
   packages/model:
     dependencies:
-      '@singularity/core':
+      '@telos-ai/core':
         specifier: workspace:*
         version: link:../core
 
   packages/models/gemini:
     dependencies:
-      '@singularity/core':
+      '@telos-ai/core':
         specifier: workspace:*
         version: link:../../core
-      '@singularity/model':
+      '@telos-ai/model':
         specifier: workspace:*
         version: link:../../model
 

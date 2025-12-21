@@ -35,6 +35,9 @@ importers:
 
   packages/models/gemini:
     dependencies:
+      '@singularity/core':
+        specifier: workspace:*
+        version: link:../../core
       '@singularity/model':
         specifier: workspace:*
         version: link:../../model

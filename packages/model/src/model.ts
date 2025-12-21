@@ -1,7 +1,4 @@
-import { PartialFeatureHandlers, ModelFeatureSupportRecord, mergeFeatureHandlers, defaultFeatureHandlers, FeatureHandlers, FeatureRecord, FeatureHandler } from "../features";
-import Generate from "../generate";
-import GenerateOutput from "../output";
-
+import Generate from "@singularity/core"
 
 function handleFeatures(
   generate: Generate,
@@ -13,27 +10,27 @@ function handleFeatures(
   for (const featureId of usedFeatures) {
     const isSupported = modelFeatureSupportRecord[featureId] ?? false;
 
-    if(isSupported) continue;
+    if (isSupported) continue;
 
     const onUnsupported = modelFeatureHandler[featureId].onUnsupported;
 
     // If error, throw error
-    if(onUnsupported ===  "error"){
+    if (onUnsupported === "error") {
       throw new Error(`Feature ${featureId} is not supported by this model.`);
     }
 
     // If ignore, call the onIgnore function. If not defined, throw error
-    else if(onUnsupported === "ignore"){
+    else if (onUnsupported === "ignore") {
       const feature = FeatureRecord[featureId];
       if ('onIgnore' in feature && typeof feature.onIgnore === 'function') {
         feature.onIgnore(generate);
-      } else{
+      } else {
         throw new Error(`Feature ${featureId} does not have an onIgnore handler.`);
       }
     }
 
     // If fallback, call the fallback function
-    else if(onUnsupported === "fallback"){
+    else if (onUnsupported === "fallback") {
       const feature = modelFeatureHandler[featureId];
       feature.fallbackFn(generate)
     }
@@ -41,14 +38,14 @@ function handleFeatures(
 }
 
 
-abstract class GenerateModel{
+abstract class GenerateModel {
   abstract providerId: string;
   abstract readonly modelId: string;
-  
+
   // Map of feature support for this model
   abstract featureSupportRecord: ModelFeatureSupportRecord;
   featureHandler: FeatureHandlers;
-  
+
   abstract generateInternal(generate: Generate): Promise<GenerateOutput>;
 
   constructor(featureHandler?: PartialFeatureHandlers) {
@@ -64,11 +61,11 @@ abstract class GenerateModel{
 
     const effectiveGenerate = generate.clone();
     handleFeatures(effectiveGenerate, this.featureHandler, this.featureSupportRecord);
-    
-    
+
+
     return this.generateInternal(effectiveGenerate);
   }
-  
+
 }
 
 export default GenerateModel;

@@ -1,4 +1,4 @@
-import { Content, Generate, GenerateModel, GenerateOutput, ModelSet } from "@generate/core/internal";
+import { Content, Generate, GenerateModel, GenerateOutput, ModelSet } from "@singularity/model";
 
 type Range = readonly [number, number];
 
@@ -20,8 +20,9 @@ export abstract class GeminiModel extends GenerateModel{
   readonly providerId = "gemini";
 
   abstract buildRequestBody(generate: Generate): any;
-
+  
   apiKey: string;
+  abstract modelId: string;
 
   constructor(apiKey: string) {
     super();
